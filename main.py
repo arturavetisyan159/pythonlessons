@@ -35,5 +35,19 @@
 
 # bool
 
-test = None
-print(test is None) # true
+# test = None
+# print(test is None) # true
+
+
+# a = 1
+# b = 2
+#
+# a,b = 2,1
+# print(a,b)
+#
+# a = 1
+# b = 2
+#
+# a = b
+# b = 1
+# print(a,b)
