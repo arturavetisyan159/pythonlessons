@@ -2,6 +2,7 @@
 
 import random
 matrix = []
+new_matrix = []
 for i in range(0, 3):
     matrix.append(list())
 for j in matrix:
@@ -15,4 +16,12 @@ for row in matrix:
         print(m, end="\t")
     print()
 print()
+
+index = 0
+for counter in range(0, (elements_in_row - 1)):
+    new_matrix.append(list())
+    for g in new_matrix:
+        g.append(matrix[counter][index])
+        index += 1
+
 
