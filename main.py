@@ -51,3 +51,17 @@
 # a = b
 # b = 1
 # print(a,b)
+
+# double_letter = [letter * 2 for letter in 'Banana']
+# print(double_letter)
+
+# b = list(range(1, 10))
+# print(b) # [1 2 3 4 5 6 7 8 9]
+
+# a = [0 for i in range(5)]
+# print(a) # [0, 0, 0, 0, 0]
+
+# my_list = [int(input("%d-ый элемент: " % (i+1))) for i in range(int(input("Введите количество элементов списка: ")))]
+# print(my_list)
+
+# список[start:stop:step]
