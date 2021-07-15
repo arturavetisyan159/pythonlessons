@@ -87,7 +87,7 @@ import random as r
 #         print(m, end='\t')
 #     print()
 
-# наполнить список n уникальными рандомными элементами
+# наполнить список n рандомными элементами
 
 # n = int(input("размер списка: "))
 # my_list = []
@@ -157,3 +157,13 @@ import random as r
 #     for x in row:
 #         print(x, end='\t')
 #     print()
+
+# Задача: наполнить список n УНИКАЛЬНЫМИ рандомными элементами
+
+# n = int(input("Размерность списка: "))
+# my_list = []
+# while n != len(my_list):
+#     new_element = r.randint(1, n)
+#     if new_element not in my_list:
+#         my_list.append(new_element)
+# print(my_list)
