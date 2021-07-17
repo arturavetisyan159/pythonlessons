@@ -1,4 +1,6 @@
 import random as r
+import math
+import time
 
 # работа с оператором print
 
@@ -108,6 +110,7 @@ import random as r
 #     print()
 # print('Произведение ненулевых элементов =', multiply)
 
+
 # Задача: составить список из элементов главной диагонали
 
 # w = int(input("Размерность массива: "))
@@ -147,6 +150,7 @@ import random as r
 
 
 # Задача: вывести матрицу рабочих дней.
+
 # days = [d for d in range(1, 32)]
 #
 # weeks = [days[i: i + 7]for i in range(0, len(days), 7)]
@@ -158,6 +162,7 @@ import random as r
 #         print(x, end='\t')
 #     print()
 
+
 # Задача: наполнить список n УНИКАЛЬНЫМИ рандомными элементами
 
 # n = int(input("Размерность списка: "))
@@ -167,3 +172,28 @@ import random as r
 #     if new_element not in my_list:
 #         my_list.append(new_element)
 # print(my_list)
+
+# num1 = math.sqrt(6)
+# num2 = math.ceil(3.3)
+# num3 = math.floor(3.8)
+# print('округление в большую сторону:', num2)
+# print('округление в меньшую сторону:', num3)
+
+# a, b = 13, 26
+# print("Наибольший общий делитель:", math.gcd(a, b))
+
+# num_list = [21, 3, 3, 4, 4]
+# print("Сумма элемнтов списка:", int(math.fsum(num_list)))
+
+# seconds = time.time()
+# print("Секунды с начала эпохи: ", seconds)
+#
+# local_time = time.ctime(seconds)
+# print("местное время: ", local_time)
+#
+# res = time.localtime(seconds)
+# print("Local time:", res)
+# print("Год:", res.tm_year)
+
+print(time.strftime("Today is %B %d, %Y."))
+print(time.strftime("%d/%m/%Y, %H:%M:%S"))
