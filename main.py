@@ -30,7 +30,7 @@ import time
 # scnd = int(input("2: "))
 # thrd = int(input("3: "))
 # frth = int(input("4: "))
-#
+
 # res1 = frst + scnd
 # res2 = thrd+ frth
 # result = res1 / res2
@@ -45,10 +45,10 @@ import time
 
 # a = 1
 # b = 2
-#
+
 # a,b = 2,1
 # print(a,b)
-#
+
 # a = 1
 # b = 2
 #
@@ -77,13 +77,13 @@ import time
 #        [8, 7, 1],
 #        [0, 7, 1],
 #        [9, 11, 6]]
-#
+
 # for i in range(0, len(mas)):
 #     if i % 2 == 0 or i == 0:
 #         mas[i].sort()
 #     else:
 #         mas[i].sort(reverse=True)
-#
+
 # for row in mas:
 #     for m in row:
 #         print(m, end='\t')
@@ -118,7 +118,7 @@ import time
 # print("Массив из случайных чисел от 1 до 100: ")
 # matrix = [[r.randint(1, 101) for x in range(h)] for y in range(h)]
 # my_list = []
-#
+
 # for row in matrix:
 #     for j in row:
 #         print(j, end='\t')
@@ -131,14 +131,14 @@ import time
 # Задача: поменять местами 1-ую и 2-ую, 3-ую и 4-ую, 5-ую и 6-ую.
 # w, h = 6, 6
 # matrix = [[r.randint(1, 10) for x in range(w)] for y in range(h)]
-#
+
 # for row in matrix:
 #     for j in row:
 #         print(j, end='\t')
 #     print()
 #
 # print()
-#
+
 # for h in range(len(matrix)):
 #     if h % 2 == 0 and h != len(matrix):
 #         for w in range(len(matrix[h])):
@@ -154,7 +154,7 @@ import time
 # days = [d for d in range(1, 32)]
 #
 # weeks = [days[i: i + 7]for i in range(0, len(days), 7)]
-#
+
 # work_weeks = [week[0:5] for week in weeks]
 #
 # for row in work_weeks:
@@ -187,13 +187,23 @@ import time
 
 # seconds = time.time()
 # print("Секунды с начала эпохи: ", seconds)
-#
+
 # local_time = time.ctime(seconds)
 # print("местное время: ", local_time)
-#
+
 # res = time.localtime(seconds)
 # print("Local time:", res)
 # print("Год:", res.tm_year)
 
-print(time.strftime("Today is %B %d, %Y."))
-print(time.strftime("%d/%m/%Y, %H:%M:%S"))
+# print(time.strftime("Today is %B %d, %Y."))
+# print(time.strftime("%d/%m/%Y, %H:%M:%S"))
+#
+# pause = 5
+# print("Programm started..")
+# time.sleep(pause)
+# print("finish")
+
+remind_text = input("Название напоминания: ")
+timing = int(input("Через сколько секунд? "))
+pause = time.sleep(timing)
+print(remind_text)
