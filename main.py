@@ -2,6 +2,7 @@ import random as r
 import math
 import time
 
+
 # работа с оператором print
 
 # name = str(input('What is yor name? '))
@@ -203,7 +204,19 @@ import time
 # time.sleep(pause)
 # print("finish")
 
-remind_text = input("Название напоминания: ")
-timing = int(input("Через сколько секунд? "))
-pause = time.sleep(timing)
-print(remind_text)
+# remind_text = input("Название напоминания: ")
+# timing = int(input("Через сколько секунд? "))
+# pause = time.sleep(timing)
+# print(remind_text)
+
+# start1 = time.monotonic()
+# time.sleep(5)
+# result = time.monotonic() - start1
+# print(result)
+
+import time
+import locale
+locale.setlocale(locale.LC_TIME, "Russian_Russia.65001")
+
+
+print(time.strftime("Сегодня: %B %d, %Y."))
