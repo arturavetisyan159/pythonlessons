@@ -1,7 +1,8 @@
 import random as r
 import math
 import time
-
+import locale
+locale.setlocale(locale.LC_ALL, "ru_RU")
 
 # работа с оператором print
 
@@ -214,9 +215,5 @@ import time
 # result = time.monotonic() - start1
 # print(result)
 
-import time
-import locale
-locale.setlocale(locale.LC_TIME, "Russian_Russia.65001")
 
-
-print(time.strftime("Сегодня: %B %d, %Y."))
+print(time.strftime("Сегодня: %d %B, %Y."))
