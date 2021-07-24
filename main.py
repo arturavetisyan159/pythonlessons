@@ -4,6 +4,7 @@ import time
 import locale
 locale.setlocale(locale.LC_ALL, "ru_RU")
 
+
 # работа с оператором print
 
 # name = str(input('What is yor name? '))
@@ -216,4 +217,68 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 # print(result)
 
 
-print(time.strftime("Сегодня: %d %B, %Y."))
+# print(time.strftime("Сегодня: %d %B, %Y."))
+
+# from decimal import Decimal, ROUND_HALF_UP
+#
+# num = Decimal("10.0055")
+# num = num.quantize(Decimal("1.00"), ROUND_HALF_UP)
+# print(num)
+
+# def queue_line(frst, scnd, quant):
+#     for i in range(1, quant + 1):
+#         if i % 2 == 0:
+#             print(scnd, end=' ')
+#         else:
+#             print(frst, end=' ')
+# queue_line('(', ')', 10)
+
+
+######################
+# def maximum(x, y):
+#     if x > y:
+#         return (x - y)
+#     else:
+#         return x + y
+#
+# a = int(input("a = "))
+# b = int(input("b = "))
+#
+# print("Результат:", maximum(a, b))
+
+# ######################
+
+# def triple(num):
+#     return num**3
+#
+# for i in range(1, 11):
+#     print(i, "в кубе =", triple(i))
+
+# ######################
+# def change_elements(lst):
+#     first = lst[0]
+#     last = lst[len(lst) - 1]
+#     lst[0] = last
+#     lst[len(lst) - 1] = first
+#     return lst
+# print(change_elements([1, 2, 2, 3, 4, 5 ,6]))
+# print(change_elements(['c', 'л', 'о', 'н']))
+
+#######################
+# def queue(num = 20, symb = '-'):
+#     return(symb * num)
+# print(queue(10, symb = '+'))
+# print(queue(20, "/"))
+
+#######################
+# def check_password(username, password, min_length=8, check_username=True):
+#     if len(password) < min_length:
+#         print("Пароль слишком короткий")
+#     elif check_username and username in password:
+#         print("Пароль содержит имя пользвателя")
+#     else:
+#         print("Пароль для пользователя", username, "прошел все проверки")
+#         return True
+# check_password('Artur', '12112', 5)
+
+#########################
