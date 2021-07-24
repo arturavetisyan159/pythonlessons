@@ -507,7 +507,23 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 #
 # print('Количество нулей в 3 кортеже :', count(tpl3))
 
-t = (10, 11, [1, 2, 3], [4, 5, 6], ['hello', 'world'])
-print(t, id(t))
-t[4][0] = 'new'
-print(t)
+##############################
+# t = (10, 11, [1, 2, 3], [4, 5, 6], ['hello', 'world'])
+# print(t, id(t))
+# t[4][0] = 'new'
+# print(t)
+
+##############################
+# развернуть и найти уникалные элементы
+# def tuple_convert(lst):
+#     new_lst = []
+#     for i in range(len(lst) - 1, -1, -1):
+#         if lst[i] in new_lst:
+#             continue
+#         else:
+#             new_lst.append(lst[i])
+#     tpl = tuple(new_lst)
+#     return tpl
+#
+# print(tuple_convert([1, 2, 3, 3, 2]))
+# print(tuple_convert([2, 1, 3, 1, 2, 5, 5, 9, 2, 0, 0]))
