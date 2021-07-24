@@ -73,6 +73,10 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 
 # список[start:stop:step]
 
+##############################
+# МАТРИЦЫ
+##############################
+
 # задача: остсортировать четные строки матрицы по возраст. , а нечетные по убыванию
 
 # mas = [[2, 5, 8],
@@ -176,6 +180,10 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 #         my_list.append(new_element)
 # print(my_list)
 
+##############################
+# MATH
+##############################
+
 # num1 = math.sqrt(6)
 # num2 = math.ceil(3.3)
 # num3 = math.floor(3.8)
@@ -187,6 +195,10 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 
 # num_list = [21, 3, 3, 4, 4]
 # print("Сумма элемнтов списка:", int(math.fsum(num_list)))
+
+######################
+# TIME
+######################
 
 # seconds = time.time()
 # print("Секунды с начала эпохи: ", seconds)
@@ -224,6 +236,10 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 # num = Decimal("10.0055")
 # num = num.quantize(Decimal("1.00"), ROUND_HALF_UP)
 # print(num)
+
+######################
+# ФУНКЦИИ
+######################
 
 # def queue_line(frst, scnd, quant):
 #     for i in range(1, quant + 1):
@@ -282,3 +298,216 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 # check_password('Artur', '12112', 5)
 
 #########################
+
+# def display_info(name, age):
+#     print("Name:", name, "\nAge:", age)
+#
+# display_info("Ira", 23)
+# display_info(age=23, name="Ira")
+
+#########################
+
+# def func(a, ln=[]):
+#     ln.append(a)
+#     return ln
+#
+# print(func(1))
+# print(func(2))
+# print(func(3))
+#
+# print()
+#
+# def func(a, ln=None):
+#     if ln is None:
+#         ln = []
+#     ln.append(a)
+#     return ln
+#
+# print(func(1))
+# print(func(2))
+# print(func(3))
+
+#########################
+
+# lt1 = [1, 2, 3] # id = 4444184832
+# lt2 = [1, 2, 3] # id = 4443586944
+# print(id(lt1))
+# print(id(lt2))
+# print(lt1 == lt2) # True
+# print(lt2 is lt1) # False
+
+########################
+
+# lt1 = [1, 2, 3]
+# lt2 = lt1
+# print(id(lt1)) # 4488167680
+# print(id(lt2)) # 4488167680
+# lt2.append(1)
+# print(id(lt2)) # 4488167680
+# print(lt1) # [1, 2, 3, 1]
+
+########################
+# s = "Hello"
+# print(id(s)) # 4550074672
+# s = "ada;d"
+# print(id(s)) # 4550074736
+
+##############################
+# a = "h"
+# b = "h"
+# print(id(a), id(b))
+
+##############################
+# a = [1, 2, 3]
+# print(id(a))
+# # a = a + [4, 5] # id будут разные в итоге
+# # a += [4, 5] # id будут одинаковые в итоге, то есть += и = ... + ..., хранятся в памяти совершенно по разному.
+# print(id(a))
+
+##############################
+# def add_number(n):
+#     print("Внутри функции", n, "=", id(n))
+#     n += 1
+#     print("После присвоения", n, "=", id(n))
+#
+# x = 1
+# print(x, "=", id(x))
+# add_number(x)
+# print(x, "=", id(x))
+
+##############################
+# КОРТЕЖ (tuple)
+##############################
+
+# lst = [10, 20, 30]
+# tpl = (10, 20, 30)
+# print(lst.__sizeof__()) # 104
+# print(tpl.__sizeof__()) # 48
+
+##############################
+# a = (1, 2, 3, 4, 5)
+# print(a)
+# b = 1, 2, 3
+# print(type(b))
+# print(b)
+
+##############################
+# t = (1)
+# print(type(t)) # int
+#
+# t = (1,)
+# print(type(t)) # tuple
+#
+# t1 = tuple('hello')
+# print(t1) # ('h', 'e', 'l', 'l', 'o')
+# print(t1[1:3])
+
+##############################
+# s1 = tuple([int(input('-> ')) for i in range(0, 5)])
+# print(s1)
+
+##############################
+# s = input("-> ")
+# a = tuple(s)
+# print(a)
+
+##############################
+# mas = [r.randint(0, 100) for i in range(10)]
+# print(mas) # [94, 58, 77, 37, 28, 44, 89, 10, 74, 23]
+# tp1 = tuple(mas) # (94, 58, 77, 37, 28, 44, 89, 10, 74, 23)
+# print(tp1)
+
+##############################
+# Заполнить кортеж степенями двойки от 1 до 12
+# tp1 = tuple([2**i for i in range(1, 13)])
+# print(tp1)
+
+##############################
+# t1 = tuple('hello')
+# t2 = tuple(' world')
+# t3 = t1 + t2
+# print(t3)
+# print(len(t3)) # 11
+# print(t3.count('l')) # 3
+# print(t3.count('a')) # 0
+# print(t3.index('l')) # 2
+#
+# if 'a' in t3:
+#     print(t3.index('a'))
+# else:
+#     print('Такого символа нет')
+
+##############################
+# t1 = tuple('hello')
+# t2 = tuple(' world')
+# t3 = t1 + t2
+# for i in t3:
+#     if i == ' ':
+#         continue
+#     print(i, end=' ')
+
+##############################
+# Срез кортежей
+# def slicer(tpl, el):
+#     tpl_new = list(tpl)
+#     lst = []
+#     if tpl.count(el) == 0:
+#         return tuple(())
+#     elif tpl.count(el) == 1:
+#         tpl_new = tpl_new[tpl_new.index(el):len(tpl_new)]
+#         tpl_new = tuple(tpl_new)
+#         return tpl_new
+#     else:
+#         tpl_new = tpl_new[tpl_new.index(el):len(tpl_new)]
+#         ind = 0
+#         for i in range(1, len(tpl_new)):
+#             if tpl_new[i] == el:
+#                 ind = i
+#         tpl_new = tpl_new[0:ind]
+#         return tuple(tpl_new)
+#
+# print(slicer((1,2,3), 8))
+# print(slicer((1,8,3,4,8,8,9), 8))
+# print(slicer((1,2,8,5,1,2,9), 8))
+
+##############################
+# def slicer(tpl, el):
+#     if el in tpl:
+#         if tpl.count(el) > 1:
+#             first_index = tpl.index(el)
+#             second_index = tpl.index(el, first_index + 1) # !!! INDEX(ИНДЕКС ИСКОМОГО ЭЛ, СТАРТОВАЯ П-ИЯ ОТСЧЕТА) !!!
+#             return tpl[first_index:second_index + 1]
+#         else:
+#             return tpl[tpl.index(el):]
+#
+#     else:
+#         return ()
+#
+#
+# print(slicer((1,2,3), 8))
+# print(slicer((1,8,3,4,8,8,9), 8))
+# print(slicer((1,2,8,5,1,2,9), 8))
+
+##############################
+# Наполнить кортеж элементами
+
+# tpl1 = tuple([r.randint(0, 5) for i in range(10)])
+# print(tpl1)
+# tpl2 = tuple([r.randint(-5, 0) for i in range(10)])
+# print(tpl2)
+# tpl3 = tpl1 + tpl2
+# print(tpl3)
+#
+# def count(tpl):
+#     counter = 0
+#     for el in tpl:
+#         if el == 0:
+#             counter += 1
+#     return counter
+#
+# print('Количество нулей в 3 кортеже :', count(tpl3))
+
+t = (10, 11, [1, 2, 3], [4, 5, 6], ['hello', 'world'])
+print(t, id(t))
+t[4][0] = 'new'
+print(t)
