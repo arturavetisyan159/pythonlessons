@@ -666,6 +666,15 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 # print(users)
 
 ##############################
-users = {'Tom', 'Bob', 'Alice'}
-users.clear() # полностью убирает все элементы
-print(users) # set()
+# users = {'Tom', 'Bob', 'Alice'}
+# users.clear() # полностью убирает все элементы
+# print(users) # set()
+
+##############################
+#                      ОПЕРАЦИИ НАД МНОЖЕСТВАМИ:
+a = {0, 1, 2, 3}
+b = {4, 3, 2, 1}
+d = {5, 2, 6}
+# c = a.union(b) # {0, 1, 2, 3, 4}
+# c = a | b # {0, 1, 2, 3, 4}
+print(c)
