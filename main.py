@@ -375,9 +375,9 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 # add_number(x)
 # print(x, "=", id(x))
 
-##############################
+########################################################################################################################
 # КОРТЕЖ (tuple)
-##############################
+########################################################################################################################
 
 # lst = [10, 20, 30]
 # tpl = (10, 20, 30)
@@ -475,7 +475,7 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 #     if el in tpl:
 #         if tpl.count(el) > 1:
 #             first_index = tpl.index(el)
-#             second_index = tpl.index(el, first_index + 1) # !!! INDEX(ИНДЕКС ИСКОМОГО ЭЛ, СТАРТОВАЯ П-ИЯ ОТСЧЕТА) !!!
+#             second_index = tpl.index(el, first_index + 1) # !!! INDEX(ИСКОМЫЙ ЭЛ, СТАРТОВАЯ П-ИЯ ОТСЧЕТА) !!!
 #             return tpl[first_index:second_index + 1]
 #         else:
 #             return tpl[tpl.index(el):]
@@ -527,3 +527,145 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 #
 # print(tuple_convert([1, 2, 3, 3, 2]))
 # print(tuple_convert([2, 1, 3, 1, 2, 5, 5, 9, 2, 0, 0]))
+
+##############################
+# def get_user():
+#     name = 'Tom'
+#     age = 22
+#     is_married = False
+#     return name, age, is_married
+#
+# user = get_user()
+# print(user) # ('Tom', 22, False)
+# print(user[0]) # Tom
+# print(user[1]) # 22
+# print(user[2]) # False
+
+##############################
+# a = (1,2,3)
+# del a
+# print(a) # NameError: name 'a' is not defined
+
+##############################
+# lst = [1, 2, 3, 4, 5]
+# print(type(lst))
+# print(lst)
+# tpl = tuple(lst)
+# print(tpl)
+
+##############################
+    # ВЫВЕСТИ НА ЭКРАН В УПОРЯДОЧЕННОМ ВИДЕ
+# countries = (
+#     ('Германия', 80.2, (('Берлин', 3.326), ('Гамбург', 1.718))),
+#     ('Франция', 66, (('Париж', 2.2), ('Марсель', 1.6)))
+# )
+#
+# for country in countries:
+#     countryName, countryPopulation, cities = country
+#     print("\n Страна:", countryName, ", население:", countryPopulation)
+#     for city in cities:
+#         cityName, cityPopulation = city
+#         print("\tГород:", cityName, ", население:", cityPopulation)
+
+
+########################################################################################################################
+                                # Множества set(), {}
+########################################################################################################################
+
+# s = {'banana', 'apple', 'orange', 'banana', 'apple'}
+# print(s) # {'apple', 'banana', 'orange'} (только уникальные элементы)
+# print(len(s)) # 3
+
+##############################
+# s = {}
+# a = set()
+# print(type(s)) # <class 'dict'>
+# print(type(a)) # <class 'set'>
+
+##############################
+# s = set('hello')
+# print(s) # {'l', 'o', 'e', 'h'}
+
+##############################
+# lst = [1, 2, 3, 3, 2, 1]
+# s = set(lst)
+# print(s) # {1, 2, 3}
+
+##############################
+# s = {'banana', 'apple', 'orange', 'banana', 'apple'}
+# lst = list(s)
+# print(lst) # ['apple', 'orange', 'banana']
+
+############################## ГЕНЕРАЦИЯ МНОЖЕСТВА
+# s = {x * x for x in range(10)}
+# print(s)
+
+##############################
+# num = [1,2,2,2,2,2,2,3,4,4,5,6]
+# s = {x for x in num} # {1, 2, 3, 4, 5, 6}
+# print(s)
+# a = {x for x in num if x % 2 == 0}
+# print(a) # {2, 4, 6}
+
+##############################
+# s = ['banana','apple', 'orange', 'apple', 'banana']
+# col = list(set(s))
+# print(col) # ['orange', 'apple', 'banana']
+
+##############################
+# преобразовать в множество и вывести с кол элементов
+# def to_set(line):
+#     new_set = set(line)
+#     return new_set, len(new_set)
+
+# print(to_set('я обычная строка')) # ({'ч', 'ы', 'к', 'а', 'б', ' ', 'я', 'о', 'с', 'т', 'н', 'р'}, 12)
+# print(to_set([4,5,4,6,2,9,11,3,4,2])) # ({2, 3, 4, 5, 6, 9, 11}, 7)
+
+##############################
+# t = {'red', 'green', 'blue'}
+# print('green' in t) # True
+# print('green' not in t) # False
+
+##############################
+# r = ['ab_1', 'ac_2', 'bc_1', 'bc_2']
+# a = {i for i in r if 'a' in i}
+# print(a) # {'ab_1', 'ac_2'}
+
+##############################
+# r = ['ab_1', 'ac_2', 'bc_1', 'bc_2']
+# a = {'A' + i[1:] if i[0] == 'a' else 'B' + i[1:] for i in r if i[1] == 'c'}
+# print(a) # {'Ac_2', 'Bc_1', 'Bc_2'}
+# Если хотим поставить else, надо ставить слева от for (проверка доп условия при наличии if справа от for)
+
+##############################
+# a = {0, 1, 2, 3}
+# a.add(4)
+# print(a) # {0, 1, 2, 3, 4}
+
+##############################
+# user = {'Tom', 'Bob', 'Alice'}
+# user.remove('Tom')
+# print(user) # {'Alice', 'Bob'}
+
+##############################
+# users = {'Tom', 'Bob', 'Alice'}
+# user = 'Ann'
+# if user in users:
+#     user.remove('Ann')
+# print(users) # {'Alice', 'Tom', 'Bob'}
+
+##############################
+# users = {'Tom', 'Bob', 'Alice'}
+# user = 'Ann'
+# users.discard(user)
+# print(users) # ошибки нет, выводится : {'Tom', 'Alice', 'Bob'}
+
+##############################
+# users = {'Tom', 'Bob', 'Alice'}
+# users.pop() # удаляет любой элемент множества в зависимости от того, как множество сформировалось
+# print(users)
+
+##############################
+users = {'Tom', 'Bob', 'Alice'}
+users.clear() # полностью убирает все элементы
+print(users) # set()
