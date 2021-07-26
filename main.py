@@ -671,10 +671,127 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 # print(users) # set()
 
 ##############################
+
 #                      ОПЕРАЦИИ НАД МНОЖЕСТВАМИ:
-a = {0, 1, 2, 3}
-b = {4, 3, 2, 1}
-d = {5, 2, 6}
+# a = {0, 1, 2, 3}
+# b = {4, 3, 2, 1}
+# d = {5, 2, 6}
 # c = a.union(b) # {0, 1, 2, 3, 4}
 # c = a | b # {0, 1, 2, 3, 4}
-print(c)
+# a.update(b) # добавляет в а все элементы b
+# print(a)
+# c = a.intersection(b) # {1, 2, 3}
+# c = a.difference(b) # {0} возвращает то, что есть в "а" но нет в "b"
+# c = a.symmetric_difference(b) # {0, 4} # возвращает то , что нет в 'а' из 'b' и то , что нет в 'b' из 'а'
+# print(c)
+
+##############################
+# a = {1,2}
+# b = {3}
+# c = {4, 5}
+# d = {3, 2, 6}
+# e = {6}
+# f = {7, 8}
+# g = {9, 8}
+#
+# unique = a|b|c|d|e|f|g
+# max = float('-inf')
+# min = float('inf')
+# for i in unique:
+#     if i > max:
+#         max = i
+#     if i < min:
+#         min = i
+# print(len(unique), '\n', max, '\n', min)
+
+##############################
+# a = set(input('Введите первую строку: '))
+# b = set(input('Введите вторую строку: '))
+# print('Общие буквы:')
+# c = a.intersection(b)
+# print(*c)
+
+##############################
+# Задача: (дополнительно)
+
+# def set_gen(lst):
+#     new_list = []
+#     for element in lst:
+#         if element in new_list:
+#             continue
+#         else:
+#             new_list.append(element)
+#
+#     for el in new_list:
+#         if lst.count(el) >= 2:
+#             for i in range(2, lst.count(el) + 1):
+#                 new_list.append(str(el) * i)
+#         else:
+#             continue
+#     res_set = set(new_list)
+#     return res_set
+#
+# list_1 = [1, 1, 3, 3, 1]
+# list_2 = [5, 5, 5, 5, 5, 5, 5]
+# list_3 = [2, 2, 1, 2, 2, 5, 6, 7, 1, 3, 2, 2]
+# print(set_gen(list_1))
+# print(set_gen(list_2))
+# print(set_gen(list_3))
+
+##############################
+# a = set(input('Введите первую строку: '))
+# b = set(input('Введите вторую строку: '))
+# c = a.difference(b)
+# print('Разность множеств: ')
+# print(*c)
+
+##############################
+# a = {0, 1, 2, 3, 4}
+# b = {3, 2, 1}
+# print(b.issubset(a)) # True (потому что 'b' - это подмножество 'a')
+
+##############################
+# Задача:
+
+# draw_set = {'Marina', 'Jenya', 'Sveta'}
+# music_set = {'Kostya', 'Jenya', 'Ilya'}
+# one_set = draw_set.symmetric_difference(music_set)
+# both_set = draw_set.intersection(music_set)
+# for el in both_set:
+#     draw_set.discard(el)
+# print('Only one hobby:', one_set)
+# print('Both hobbies:', both_set)
+# print('Drawing:', draw_set)
+
+##############################
+# frozenset() - множество, которое не может быть измененно (конечный результат, который нельзя менять)
+# s = frozenset({'hello', 'world'})
+# print(s) # frozenset({'hello', 'world'})
+
+# r = set('abcd')
+# s = {frozenset({i+j for j in r.difference(({i}))}) for i in r}
+# print(s) # {frozenset({'da', 'dc', 'db'}), frozenset({'ba', 'bd', 'bc'}), frozenset({'ca', 'cb', 'cd'}), frozenset({'ac', 'ad', 'ab'})}
+
+##############################
+# Задача:
+
+# def superset(set1, set2):
+#     if set1 > set2:
+#         print('ОбЪект', set1, 'является чистым супермножеством')
+#     elif set2 > set1:
+#         print('ОбЪект', set2, 'является чистым супермножеством')
+#     elif set1 == set2:
+#         print('Множества равны')
+#     else:
+#         print('Супермножество не обнаружено')
+#
+# set_1 = {1, 8, 3, 5}
+# set_2 = {3, 5}
+# set_3 = {5, 3, 8, 1}
+# set_4 = {90, 100}
+#
+# superset(set_1, set_2)
+# superset(set_1, set_3)
+# superset(set_2, set_3)
+# superset(set_2, set_4)
+
