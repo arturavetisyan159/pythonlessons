@@ -795,3 +795,64 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 # superset(set_2, set_3)
 # superset(set_2, set_4)
 
+
+########################################################################################################################
+                                # Словари (dictionary)
+########################################################################################################################
+
+# d = {'one': 1, 'two': 2}
+# print(d)
+#
+# a = {}
+# # print(type(a)) # <class 'dict'>
+#
+# d1 = dict(one='one1', two=2)
+# # print(type(a1)) # <class 'dict'>
+# print(d1)
+#
+# d3 = dict.fromkeys(['a', 'b'], 100)
+# print(d3) # {'a': 100, 'b': 100}
+
+##############################
+
+# users = [
+#     ['igor@gmail.com', 'Igor'],
+#     ['irina@gmail.com', 'Irina'],
+#     ['anna@gmail.com', 'Anna']
+# ]
+#
+# d_users = dict(users) # Если в списке правильно расположены элементы, то все сгенерируется нормально
+# print(d_users) # {'igor@gmail.com': 'Igor', 'irina@gmail.com': 'Irina', 'anna@gmail.com': 'Anna'}
+
+##############################
+
+# d4 = {a+5: a ** 2 for a in range(7)}
+# print(d4)
+#
+# print(d4[7]) # 4 - обращение к элементу по ключу
+# d4[7] = 14
+# print(d4[7]) # 14
+
+##############################
+
+d5 = {0: 'text1', 'one': 45, (1, 2.3): 'кортеж', 42: [1, 2, 3, 6], True: 1}
+print(d5[42][1]) # 2
+print(d5['one'])
+del d5[(1, 2.3)] # удаляет ключ и значение в словаре
+print(d5)
+
+print('one' in d5) #  True
+print('two' in d5) # False
+print(d5.keys())
+
+if 'one' in d5:
+    print('TRUE')
+if "one" in d5.keys():
+    print("TRUE")
+
+
+
+
+
+
+
