@@ -898,17 +898,34 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 #         print('В базе нет страны с названием ' + country)
 
 ##############################
-# Задание: данные о товарах, их количестве и цене
+# Задание: данные о товарах, их количестве и цене. Реализовать изменение количества товара по ключу
 
-goods = {
-    '1': ['Core-i3-4330', 9, 4500],
-    '2': ['Core-i5-4670k', 3, 8500],
-    '3': ['AMD FX-6300', 6, 3700],
-    '4': ['Pentium G3220', 8, 2100],
-    '5': ['Core-i5-3450', 5, 6400],
-}
+# goods = {
+#     '1': ['Core-i3-4330', 9, 4500],
+#     '2': ['Core-i5-4670k', 3, 8500],
+#     '3': ['AMD FX-6300', 6, 3700],
+#     '4': ['Pentium G3220', 8, 2100],
+#     '5': ['Core-i5-3450', 5, 6400],
+# }
+#
+# for key in goods:
+#     print(key + ') ' + goods[key][0] + ' - ' + str(goods[key][1]) + ' шт. По ' + str(goods[key][2]) + ' руб.')
+# print()
+# change_key = 1
+# while change_key != 0:
+#     change_key = int(input('№: '))
+#     if change_key != 0:
+#         amount = int(input('Количество: '))
+#         goods[str(change_key)][1] = amount
+#     else:
+#         break
+#
+# for key in goods:
+#     print(key + ') ' + goods[key][0] + ' - ' + str(goods[key][1]) + ' шт. По ' + str(goods[key][2]) + ' руб.')
 
-for key in goods:
-    print(key + ') ' + goods[key][0] + ' - ' + str(goods[key][1]) + ' шт. По ' + str(goods[key][2]) + ' руб.')
-
-change_key = input('№: ')
+##############################
+d = {'A': 1, 'B': 2, 'C': 3}
+x = iter(d)
+print(x)
+lst = list(x)
+print(lst)
