@@ -834,25 +834,81 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 # print(d4[7]) # 14
 
 ##############################
+# d5 = {0: 'text1', 'one': 45, (1, 2.3): 'кортеж', 42: [1, 2, 3, 6], True: 1}
+# print(d5[42][1]) # 2
+# print(d5['one'])
+# del d5[(1, 2.3)] # удаляет ключ и значение в словаре
+# print(d5)
+#
+# print('one' in d5) #  True
+# print('two' in d5) # False
+# print(d5.keys())
+#
+# if 'one' in d5: # проходит по всем элементам
+#     print('TRUE')
+# if "one" in d5.keys(): # проходит только по ключам
+#     print("TRUE")
 
-d5 = {0: 'text1', 'one': 45, (1, 2.3): 'кортеж', 42: [1, 2, 3, 6], True: 1}
-print(d5[42][1]) # 2
-print(d5['one'])
-del d5[(1, 2.3)] # удаляет ключ и значение в словаре
-print(d5)
+##############################
+# d6 = {'one': 1, 'two': 2, 'three': 3}
+# # print(d6['four'])
+# key = "four"
+# # if key in d6:
+# #     del d6[key]
+# try:
+#     del d6[key]
+# except KeyError:
+#     print("Такого ключа нет в словаре!")
+# print(d6)
 
-print('one' in d5) #  True
-print('two' in d5) # False
-print(d5.keys())
+##############################
+# d6 = {'one': 1, 'two': 2, 'three': 3}
+# for key in d6:
+#     print(key, d6[key])
 
-if 'one' in d5:
-    print('TRUE')
-if "one" in d5.keys():
-    print("TRUE")
+##############################
+# d = {'x1': 3, 'x2': 7, 'x3': 5, 'x4': -1}
+# res = 1
+# for key in d:
+#     res = res * d[key]
+# print(res) # -105
 
+##############################
+# Задача: наполнить словарь, потом удалить элемент по ключу
 
+# d = {i: input('-> ') for i in range(1, 5)}
+# print(d)
+# key = int(input('Какой элемент исключить: '))
+# del d[key]
+# print(d)
 
+##############################
+# capitals = dict()
+#
+# capitals['Россия'] = 'Москва'
+# capitals['Италия'] = 'Рим'
+# capitals['Испания'] = 'Мадрид'
+#
+# countries = ['Россия', 'Италия', 'Франция', 'Испания']
+#
+# for country in countries:
+#     if country in capitals:
+#         print('Столица страны ' + country + ': ' + capitals[country])
+#     else:
+#         print('В базе нет страны с названием ' + country)
 
+##############################
+# Задание: данные о товарах, их количестве и цене
 
+goods = {
+    '1': ['Core-i3-4330', 9, 4500],
+    '2': ['Core-i5-4670k', 3, 8500],
+    '3': ['AMD FX-6300', 6, 3700],
+    '4': ['Pentium G3220', 8, 2100],
+    '5': ['Core-i5-3450', 5, 6400],
+}
 
+for key in goods:
+    print(key + ') ' + goods[key][0] + ' - ' + str(goods[key][1]) + ' шт. По ' + str(goods[key][2]) + ' руб.')
 
+change_key = input('№: ')
