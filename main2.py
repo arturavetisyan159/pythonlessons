@@ -324,21 +324,107 @@
 ##############################
 # ЗАДАЧА преобразовать в словарь
 
-lst = ['one', 1, 2, 3, 'two', 10, 20, 'three', 15, 36, 60, 'four', -20]
-d = {}
+# lst = ['one', 1, 2, 3, 'two', 10, 20, 'three', 15, 36, 60, 'four', -20]
+# d = {}
+#
+# for i in lst:
+#     if type(i) == str:
+#         key = i
+#         d[key] = []
+#     if type(i) == int:
+#         d[key].append(i)
+# print(d)
 
-for i in range(0, len(lst)):
-    values = []
-    j = 0
-    if type(lst[i]) == str:
-        k = i
-        while type(j) != str:
-            if type(j) == str:
-                break
-            if k == len(lst) - 1:
-                break
-            j = lst[k + 1]
-            k = k + 1
-            values.append(j)
-        d.update([(lst[i], values)])
+##############################
+#                                   ZIP
 
+# d = dict(zip([1, 2, 3], ['one', 'two', 'three']))
+# print(d) # {1: 'one', 2: 'two', 3: 'three'}
+
+##############################
+# d = {}
+# lst = list(zip([1, 2], [3, 4]))
+# print(lst)
+# d.update(lst)
+# print(d)
+
+##############################
+# one = {'name': 'Igor', 'surname': 'Dou', 'job': 'consultant'}
+# two = {'name': 'Irina', 'surname': 'Smith', 'job': 'manager'}
+#
+# for (k1, v1), (k2, v2) in list(zip(one.items(), two.items())):
+#     print(k1, '->', v1)
+#     print(k2, '->', v2)
+
+##############################
+# pairs = [(1, 'a'), (2,'b'), (3, 'c'), (4, 'd')]
+# a, b = zip(*pairs) # обратная операция
+#
+# print(a) # (1, 2, 3, 4)
+# print(b) # ('a', 'b', 'c', 'd')
+
+##############################
+# l = ['b', 'a', 'd', 'c']
+# n = [2, 4, 1, 3]
+# s1 = list(zip(l, n))
+# print(s1)
+# s1.sort() # происходит сортировка по первому элементу кортежа
+# print(s1)
+#
+# print()
+#
+# s2 = list(zip(n, l))
+# print(s2)
+# s2.sort()
+# print(s2)
+#
+# print()
+#
+# d3 = sorted(zip(l, n))
+# print(d3)
+
+##############################
+# Задание: через zip вывести прибыль.
+
+# months = ['january', 'february', 'march']
+# totalSales = [52000, 51000, 48000]
+# productionCost = [46800, 45900, 43200]
+#
+# table = list(zip(months, totalSales, productionCost))
+# print(table)
+#
+# for element in table:
+#     print('Прибыль в', element[0], 'составила:', element[1] - element[2])
+
+##############################
+# one = {'apple': 0.40, 'orange': 0.35}
+# two = {'pepper': 0.20, 'onion': 0.55}
+# print({**two, **one}) # ** - это оператор распаковки словаря.
+#
+# for k, v in {**two, **one}.items():
+#     print(k, '->', v)
+
+##############################
+#                            ENUMERATE()
+# data = [2, 5, 3, 4, 1, 5]
+# for i, val in enumerate(data, 1): # делает список кортежей
+#     print(i, val)
+
+##############################
+# data = [2, 5, 3, 4, 1, 5]
+# itr = iter(data)
+# print()
+# print(next(itr)) # 2
+# print(next(itr)) # 5
+# print(next(itr)) # 3
+# print(next(itr)) # 4
+# print(next(itr)) # 1
+# print(next(itr)) # 5
+# print(next(itr, 'stop'))
+
+##############################
+data = [2, 5, 3, 4, 1, 5]
+b = enumerate(data)
+c = next(b)
+print(c)
+print(next(b))
