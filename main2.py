@@ -303,10 +303,10 @@
 # print(d)
 
 ##############################
-m = dict()
-m[(0, 1)] = 1
-m[(1, 2)] = 3
-m[2, 0] = 2
+# m = dict()
+# m[(0, 1)] = 1
+# m[(1, 2)] = 3
+# m[2, 0] = 2
 
 # print(m.get((2, 1), 0))
 # print(m.get((2, 0), 0))
@@ -331,10 +331,14 @@ for i in range(0, len(lst)):
     values = []
     j = 0
     if type(lst[i]) == str:
+        k = i
         while type(j) != str:
-            j = lst[i + 1]
-            i = i + 1
+            if type(j) == str:
+                break
+            if k == len(lst) - 1:
+                break
+            j = lst[k + 1]
+            k = k + 1
             values.append(j)
-        
-
+        d.update([(lst[i], values)])
 
