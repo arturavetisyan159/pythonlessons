@@ -423,8 +423,48 @@
 # print(next(itr, 'stop'))
 
 ##############################
-data = [2, 5, 3, 4, 1, 5]
-b = enumerate(data)
-c = next(b)
-print(c)
-print(next(b))
+# data = [2, 5, 3, 4, 1, 5]
+# b = enumerate(data)
+# c = next(b)
+# print(c)
+# print(next(b))
+
+##############################
+# a = [1, 2, 3]
+# b = [*a, 4, 6, 8] # [1, 2, 3, 4, 6, 8]
+
+##############################
+# def func(*args): # *a возвращает кортежик
+#     if args == tuple():
+#         return 0
+#     else:
+#         mult = 1
+#         for el in args:
+#             mult = mult * el
+#         return mult
+# print(func(5))
+# print(func(5, 6, 4, 3))
+# print(func())
+
+##############################
+# def func(*args):
+#     return {i: i for i in args}
+#
+# print(func(1, 2, 3, 4, 5, 6, 7, 8))
+
+##############################
+def func(*args):
+    sum = 0
+    for el in args:
+        sum = sum + el
+    print('Среднее арифметическое:', sum/len(args))
+    res_list = []
+    for elem in args:
+        if elem < sum/len(args):
+            res_list.append(elem)
+    print(res_list)
+
+func(1, 2, 3, 4, 5, 6, 7, 8, 9)
+func(3, 6, 1, 9, 5)
+
+
