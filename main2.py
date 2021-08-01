@@ -453,18 +453,114 @@
 # print(func(1, 2, 3, 4, 5, 6, 7, 8))
 
 ##############################
-def func(*args):
-    sum = 0
-    for el in args:
-        sum = sum + el
-    print('Среднее арифметическое:', sum/len(args))
-    res_list = []
-    for elem in args:
-        if elem < sum/len(args):
-            res_list.append(elem)
-    print(res_list)
+# def func(*args):
+# #     sum = 0
+# #     for el in args:
+# #         sum = sum + el
+# #     print('Среднее арифметическое:', sum/len(args))
+# #     res_list = []
+# #     for elem in args:
+# #         if elem < sum/len(args):
+# #             res_list.append(elem)
+# #     print(res_list)
+# #
+# # func(1, 2, 3, 4, 5, 6, 7, 8, 9)
+# # func(3, 6, 1, 9, 5)
 
-func(1, 2, 3, 4, 5, 6, 7, 8, 9)
-func(3, 6, 1, 9, 5)
+##############################
 
+# def func(student, *args):
+#     print(f'Student name: {student}')
+#     for i in args:
+#         print(i)
+#
+#
+# func('Igor', 100, 96, 88, 92, 99)
+# print()
+# func('Irina', 96, 20, 33, 36)
 
+##############################
+# Задание: поменять порядок цифр в числе
+
+# def func(*args, only_odd=False):
+#     res_list = []
+#     if only_odd == False:
+#         for el in args:
+#             el = str(el)
+#             new_el = ''
+#             for i in range(len(el) - 1, -1, -1):
+#                 new_el = new_el + el[i]
+#             res_list.append(int(new_el))
+#     if only_odd == True:
+#         for el in args:
+#             if el % 2 != 0:
+#                 el = str(el)
+#                 new_el = ''
+#                 for i in range(len(el) - 1, -1, -1):
+#                     new_el = new_el + el[i]
+#                 res_list.append(int(new_el))
+#             else:
+#                 continue
+#     return res_list
+#
+# print(func(12, 23, 41, 5643, only_odd=True)) # [32, 14, 3465]
+# print(func(12, 23, 41, 5643)) # [21, 32, 14, 3465]
+
+##############################
+
+# def func(**kwargs):
+#     return kwargs
+#
+# print(func(a=1, b=2, c=3)) # {'a': 1, 'b': 2, 'c': 3}
+# print(func()) # {}
+# print(func(a='python')) # {'a': 'python'}
+
+##############################
+
+# def info(**kwargs):
+#     for k, v in kwargs.items():
+#         print(k, 'is', v)
+#     print()
+#
+# info(firstname='Irina', lastname='Sharm', age=22, phone=1212482)
+# info(firstname='Irina', lastname='Wood', email='igor@gmail.com', age=25)
+
+##############################
+# Задание: написать функцию, чтоб при каждом ее вызове, обновлялся словарь
+
+# my_dict = {'one': 'first'}
+# def db(**kwargs):
+#     my_dict.update(kwargs.items())
+#
+# db(k1=22, kr=11)
+# db(m=1)
+# print(my_dict)
+
+##############################
+# SCOPE - область видимости переменных и др.
+
+# name = "Tom" # глобальная переменная
+#
+#
+# def hi():
+#     print('Hello', name)
+#
+# def bye():
+#     print("Good bye", name)
+#
+# hi()
+# bye()
+##############################
+name = 'Bob' # глобальная
+
+def hi():
+    print('Hello', name)
+
+def bye():
+    global name # перезаписываем глобальную переменную
+    name = 'b' # локальная
+    print("Good bye", name)
+
+bye()  # tom
+hi() # tom
+print(name) # tom
