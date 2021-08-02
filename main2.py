@@ -551,16 +551,74 @@
 # hi()
 # bye()
 ##############################
-name = 'Bob' # глобальная
+# name = 'Bob' # глобальная
+#
+# def hi():
+#     print('Hello', name)
+#
+# def bye():
+#     global name # перезаписываем глобальную переменную
+#     name = 'b' # локальная
+#     print("Good bye", name)
+#
+# bye()  # b
+# hi() # b
+# print(name) # b
 
-def hi():
-    print('Hello', name)
+##############################
 
-def bye():
-    global name # перезаписываем глобальную переменную
-    name = 'b' # локальная
-    print("Good bye", name)
+# i = 5
+#
+# def func(arg=i):
+#     print(arg)
+#
+# i = 6
+# func() # 5
 
-bye()  # tom
-hi() # tom
-print(name) # tom
+##############################
+# def add_two(a):
+#     x = 2
+#     def add_some():
+#         print('x =', x)
+#         return a + x
+#     return add_some()
+#
+# print(add_two(3))
+
+##############################
+# x = 25
+#
+# def outer_func():
+#     global t
+#     a = 30
+#     t = a
+#     print(x)
+#
+#     def inner_func():
+#         nonlocal a
+#         a = 35
+#         print('nonlocal \'a\':', a)
+#     inner_func()
+#
+# outer_func()
+# z = x + t
+# print(z)
+
+##############################
+def fn1():
+    x1 = 25
+
+    def fn2():
+        x1 = 35
+
+        def fn3():
+            nonlocal x1
+            x1 = 55
+        fn3()
+        print('fn2.x1 =', x1) # 55
+
+    fn2()
+    print('fn1.x1 =', x1) # 25
+
+fn1()
+
