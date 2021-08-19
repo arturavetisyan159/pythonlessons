@@ -604,21 +604,150 @@
 # z = x + t
 # print(z)
 
+
 ##############################
-def fn1():
-    x1 = 25
+# def fn1():
+#     x1 = 25
+#
+#     def fn2():
+#         x1 = 35
+#
+#         def fn3():
+#             nonlocal x1
+#             x1 = 55
+#         fn3()
+#         print('fn2.x1 =', x1) # 55
+#
+#     fn2()
+#     print('fn1.x1 =', x1) # 25
+#
+# fn1()
 
-    def fn2():
-        x1 = 35
 
-        def fn3():
-            nonlocal x1
-            x1 = 55
-        fn3()
-        print('fn2.x1 =', x1) # 55
+##############################
 
-    fn2()
-    print('fn1.x1 =', x1) # 25
+# def increment(number):
+#
+#     def inner_increment(x):
+#         return number + x
+#     return inner_increment
+#
+#
+# test1 = increment(10)
+# print(test1(5)) # 15
+#
+# test2 = increment(10)
+# print(test2(6)) # 16
+#
+# print(increment(10)(7)) # 17
 
-fn1()
+##############################
 
+# def increment():
+#     # a, b, c - свободные пременные
+#     a = 1
+#     b = 'line'
+#     c = [1, 2, 3]
+#
+#     def inner_increment():
+#         c.append(4)
+#         nonlocal a
+#         a = a + 1
+#         return a, b, c
+#
+#     return inner_increment
+#
+#
+# test1 = increment()
+# print(test1())
+
+
+##############################
+# Задача:
+
+# def visits(city):
+#     counter = 0
+#     def visits_counter():
+#         nonlocal counter
+#         counter = counter + 1
+#         print(city + ' ' + str(counter))
+#     return visits_counter
+#
+# test1 = visits('Moscow')
+# test2 = visits('Sochi')
+# test1() # Moscow 1
+# test1() # Moscow 2
+# test1() # Moscow 3
+# test2() # Sochi 1
+# test2() # Sochi 2
+
+
+##############################
+
+# students = {
+#     'art': 100,
+#     'Anna': 98,
+#     'Bob': 67,
+#     'Chris': 85,
+#     'Alice': 75,
+#     'Fiona': 35,
+#     'Ella': 54,
+#     'David': 69
+# }
+#
+# def outer(lower, upper):
+#     def inner(exam):
+#         return {k: v for (k, v) in exam.items() if lower <= v < upper}
+#
+#     return inner
+#
+# a = outer(80, 101)
+# b = outer(70, 80)
+# c = outer(50, 70)
+# d = outer(0, 50)
+#
+# print(a(students)) # {'art': 100, 'Anna': 98, 'Chris': 85}
+# print(b(students)) # {'Alice': 75}
+# print(c(students)) # {'Bob': 67, 'Ella': 54, 'David': 69}
+# print(d(students)) # {'Fiona': 35}
+
+##############################
+
+# def outer(a, b):
+#     def add():
+#         return a + b
+#
+#     def sub():
+#         return a - b
+#
+#     def mult():
+#         return a * b
+#
+#     def replace():
+#         pass
+#
+#     replace.add = add
+#     replace.sub = sub
+#     replace.mult = mult
+#
+#     return replace
+#
+# obj1 = outer(5, 2)
+# print(obj1.add()) # 7
+#
+# obj2 = outer(5, 2)
+# print(obj2.sub()) # 3
+#
+# obj3 = outer(5, 2)
+# print(obj3.mult()) # 10
+
+##############################
+#                                        LAMBDA - ФУНКЦИЯ
+func = lambda x, y: x + y
+print(func(10, 5)) # 15
+print(func('a', 'b')) # ab
+
+print((lambda x, y: x + y)(1, 2)) # 3
+
+a = (lambda x, y: x + y)(1, 4)
+print(a) # 5
