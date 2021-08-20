@@ -754,4 +754,129 @@
 
 ##############################
 
-print((lambda x, y: x**2 + y**2)(2, 5))
+# print((lambda x, y: x**2 + y**2)(1, 2))
+
+##############################
+
+# summ = lambda a=1, b=2, c=3: a + b + c
+# print(summ())
+# print(summ(10)) # 15
+
+##############################
+
+# func1 = lambda *args: args
+# print(func1(1, 2, 3, 4)) # (1, 2, 3, 4)
+
+##############################
+
+# c = (lambda x: x * 2,
+#     lambda x: x * 3,
+#     lambda x: x * 4
+# )
+# for t in c:
+#     print(t('abc'))
+
+##############################
+
+# def inc(n):
+#     return lambda x: x + n
+
+# test1 = inc(5)
+# print(test1(2))
+# print(test1(2))
+
+##############################
+
+# inc = (lambda n: (lambda x: n + x))
+# test1 = inc(5)
+# print(test1(2))
+
+# print((lambda n: (lambda x: n + x))(5)(7))
+
+##############################
+# circle = lambda r: 3.14 * r ** 2
+# sq = lambda w, l: w * l
+# trap = lambda a=7, b=5, h=3: (a + b)/2 * h
+
+# print(circle(2))
+# print(sq(10, 13))
+# print(trap())
+
+##############################
+
+# d = {'a': 10, 'b': 15, 'c': 4}
+
+# list_d = list(d.items())
+# print(list_d)
+
+# list_d.sort(key=lambda i: i[1])
+# print(list_d)
+
+##############################
+
+# Задача (отсортировать по фамилии, а потом по баллу и по баллу наоборот)
+
+# players = [{'name': 'Антон', 'last name': 'Бирюков', 'raiting': 9},
+#     {'name': 'Алексей', 'last name': 'Бодня', 'raiting': 10},
+#     {'name': 'Федор', 'last name': 'Сидоров', 'raiting': 4},
+#     {'name': 'Михаил', 'last name': 'Семенов', 'raiting': 6}
+# ]
+# print('Сортировка по фамилии', end='\n')
+# players.sort(key=lambda i: i['last name'])
+# print(players)
+
+# print()
+
+# print('Сортировка по рейтингу', end='\n')
+# players.sort(key=lambda i: i['raiting'])
+# print(players)
+
+# print()
+
+# print('Наоборот', end='\n')
+# players.sort(key=lambda i: i['raiting'], reverse=True)
+# print(players)
+
+##############################
+# a = [
+#     (lambda x, y: x + y),
+#     (lambda x, y: x - y),
+#     (lambda x, y: x * y),
+#     (lambda x, y: x / y)
+# ]
+# b = a[0](5, 12)
+# print(b) # 17
+
+# b = a[1](5, 12)
+# print(b) # -7
+
+##############################
+# a = {'one': lambda x: x - 1, 'two': lambda x: abs(x) - 1, 'three': lambda x: x}
+# b = [-3, 10, 0, 1]
+
+# for i in b: 
+#     if i < 0:
+#         print(a['two'](i))
+#     elif i > 0:
+#         print(a['one'](i))
+#     else:
+#         print(a['three'](i))
+
+##############################
+
+# d = {
+#     1: (lambda: print('Monday')),
+#     2: (lambda: print('Tuesday')),
+#     3: (lambda: print('Wednesday')),
+# }
+# d[1]()
+
+##############################
+# maximum = (lambda a, b: a if a>b else b)
+# print(maximum(10, 11)) # 11
+
+##############################
+# Задача найти минимальное из трех значений:
+
+# minimum = (lambda a, b, c: a if a <= b and a <= c else b if b <= c and b <= a else c)
+# print(minimum(9, 8, 5))
