@@ -14,4 +14,3 @@ print(res(20))
 res = func_compute(3)
 print(res(15))
 print(res(20))
-

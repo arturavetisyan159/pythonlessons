@@ -1,4 +1,4 @@
-# Сортировка сначала по имени, потом по баллам.
+# Получить минимальную и максимальную итоговую оценки студентов.
 
 students = [
     {'name': 'Jennifer', 'final': 95},
@@ -6,8 +6,7 @@ students = [
     {'name': 'Nikolas', 'final': 98}
 ]
 
-students.sort(key=lambda el: el['name'])
-print(students)
-
 students.sort(key=lambda el: el['final'], reverse=True)
-print(students)
+
+print(students[0])
+print(students[len(students) - 1])
