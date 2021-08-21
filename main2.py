@@ -1140,17 +1140,17 @@ import random as r
 
 
 ##############################
-def args_decorator(tx = None, decorator_text = ''):
-    def my_decorator(func):
-        def wrap(*args):
-            print(decorator_text, end='')
-            func()
-        return wrap
-    if tx is None:
-        return my_decorator
-    else:
-        return my_decorator(tx)
+# def args_decorator(tx = None, decorator_text = ''):
+#     def my_decorator(func):
+#         def wrap(*args):
+#             print(decorator_text, end='')
+#             func()
+#         return wrap
+#     if tx is None:
+#         return my_decorator
+#     else:
+#         return my_decorator(tx)
 
-@args_decorator
-def hello_world(text):
-    print(text)
+# @args_decorator
+# def hello_world(text):
+#     print(text)
