@@ -52,6 +52,7 @@
 # Задача: отфильтровать список элементов.
 
 import random as r
+from typing import Type
 
 # lst = []
 # for i in range(10):
@@ -247,60 +248,217 @@ import random as r
 
 # one(10)
 
+##############################
 
-##########################################################################################
-            # занятие
-##########################################################################################
+# def args_decorator(fn):
+#        def wrap(*args, **kwargs):
+#               print('args:', args)
+#               print('Kwargs:', kwargs)
+#               fn(*args, **kwargs)
+#        return wrap
 
+# @args_decorator
+# def print_full_name(a, b, c, study='Python'):
+#        print(a, b, c, 'изучают', study, '\n')
 
-# def typed(*args, **kwargs):
-#     def wrapper(fn):
-#         def wrap(*f_args, **f_kwargs):
-#             for i in range(len(args)):
-#                 if type(f_args[i]) != args[i]:
-#                     raise TypeError()
-#             for k in kwargs:
-#                 if type(f_kwargs[k]) != kwargs[k]:
-#                     raise TypeError
-#             return fn(*f_args, **f_kwargs)
+# print_full_name('Борис', 'Елизавета', 'Светлана', study='Javascript')
+# print_full_name('Борис', 'Елизавета', 'Светлана')
 
-#         return wrap
-#     return wrapper
+##############################
+# def args_decorator(arg1, arg2):
+#        print('Я создаю декоратор! Аргументы декоратора:', arg1, arg2)
 
+#        def my_decorator(func):
+#               print('Я декоратор. Аргументы:', arg1, arg2)
+
+#               def wrap(func_arg1, func_arg2):
+#                      print('Обертка')
+#                      func(func_arg1, func_arg2)
+#               return wrap
+
+#        return my_decorator
+
+# @args_decorator('Игорь', 'Нефедов')
+# def print_full_name(first, last):
+#        print('Меня зовут', first, last)
+
+# print_full_name('Artur', 'Avetisyan')
+
+##############################
+
+# def args_decorator(decorator_text):
+#        def my_decorator(func):
+#               def wrap(*args):
+#                      print(decorator_text, end='')
+#                      func(*args)
+#               return wrap
+#        return my_decorator
+
+# @args_decorator(decorator_text='Hello, ')
+# def hello_world(text):
+#        print(text)
+
+# hello_world('world!')
+
+##############################
+
+# def typed(*args, **kwargs):                          
+#        def wrapper(fn):
+#               def wrap(*f_args, **f_kwargs):
+#                      for i in range(0, len(args)):
+#                             if type(f_args[i]) != args[i]:
+#                                    raise TypeError()
+#                      for j in kwargs:
+#                             if type(f_kwargs) != kwargs[j]:
+#                                    raise TypeError()
+#                      return fn(*f_args, **f_kwargs)     
+#               return wrap
+#        return wrapper
 
 
 # @typed(int, int, int)
 # def typed_fn(x, y, z):
-#     return x * y * z
+       
+#        return x * y * z
 
 # @typed(str, str, str)
 # def typed_fn2(x, y, z):
-#     return x + y + z
+#        return x + y + z
 
 # @typed(str, str, int)
-# def typed_fn3(x, y, z='Hello'):
-#     return (x+y)*z
+# def typed_fn3(x, y, z='Hello!'):
+#        return (x + y) * z
 
 # print(typed_fn(3, 4, 5))
-# print(typed_fn2('z', 'y', 'x'))
-# print(typed_fn3('hello', 'world', 6))
-
+# print(typed_fn2('he', 'ss', 'f'))
+# print(typed_fn3('Hey', 'Arnold', z=5))
 
 ##############################
-# def args_decorator(tx = None, decorator_text = ''):
-#     def my_decorator(func):
-#         def wrap(*args):
-#             print(decorator_text, end='')
-#             func()
-#         return wrap
-#     if tx is None:
-#         return my_decorator
-#     else:
-#         return my_decorator(tx)
+
+# def args_decorator(tx=None, decorator_text=''):
+#        def my_decorator(func):
+#               def wrap(*args):
+#                      print(decorator_text, end='')
+#                      func(*args)
+#               return wrap
+#        if tx is None:
+#               return my_decorator
+#        else:
+#               return my_decorator(tx)
 
 # @args_decorator
 # def hello_world(text):
-#     print(text)
+#        print(text)
 
+# @args_decorator(decorator_text='Hello, ')
+# def hello_world2(text):
+#        print(text)
 
+# hello_world('HI')
+# hello_world2('World')
+
+##############################
+# print(bin(19)) # 0b10011
+# print(oct(19)) # 0o23
+# print(hex(19)) # 0x13
+
+# # Двоичная СИ: 0b или 0B
+# print(0b1010) # 10
+
+# # Восьмеричная СИ - 0o или 0O
+# print(0o12) # 10
+
+# # Шестнадцатиричная - 0x или 0X
+# print(0xFF)
+
+# s = 'Hello'
+# print(s[4:0:-2]) # ol
+
+##############################
+# s = 'abcdefgh'
+# print(s[slice(7, None, -1)]) # hgfedcba
+
+##############################
+# s = 'Python'
+# s = s[:3] + 't' + s[4:]
+# print(s)
+
+##############################
+# str1 = 'Я изучаю Nuthon. Мне нравится Nuthon. Nuthon очень интересный язык.'
+# def change(stroka, symbol1, symbol2):
+#        for l in range(0, len(stroka)):
+#               if stroka[l] == symbol1:
+#                      stroka = stroka[:l] + symbol2 + stroka[l+1:]
+              
+#        return stroka
+# print(change(str1, 'N', 'P')) # Я изучаю Puthon. Мне нравится Puthon. Puthon очень интересный язык.
+
+##############################
+
+# import math as m
+
+# print('C:\\file.txt') # C:\file.txt
+# # префикс 'r' перед строкой отменяет экранирование.
+# print(r'C:\D') # C:\D
+
+# # префикс 'b'
+# print(b'a1b2c3'[1]) # 49
+
+# # префикс 'f' позволяет спокойно использовать переменные в выводе
+# name = 'Дмитрий'
+# age = 25
+# print(f'{name}') # Дмиртрий
+
+# Префикс 'fr'- объединение 'f' и 'r'
+# dir_name = 'my_doc'
+# file_name = 'data.txt'
+# print(fr'home\{dir_name}\{file_name}') # home\my_doc\data.txt
+
+##############################
+# def square(n):
+#        '''Функция которая возводит в квадрат принимаемое число n. Возвращает его квадрат'''
+#        return n**2
+# print(square(5))
+
+##############################
+# print(ord('a')) # 97
+
+##############################
+my_str = 'Test string for me'
+print()
+def asci_code_list_converter(stroka):
+       asci_list = []
+       for el in stroka:
+              asci_list.append(ord(el))
+       return asci_list
+
+ASCII_code_list = asci_code_list_converter(my_str)
+print(f'ASCII коды: {ASCII_code_list}')
+
+sum = 0
+for elem in ASCII_code_list:
+       sum += elem
+ASCII_code_list = [int(round(sum/len(ASCII_code_list))), *ASCII_code_list]
+print(f'Среднее арифметическое: {ASCII_code_list}')
+
+new_str = input('-> ')
+new_str = new_str[0:4]
+new_code_list = asci_code_list_converter(new_str)
+
+for element in new_code_list:
+       if element in ASCII_code_list:
+              continue
+       else:
+              ASCII_code_list.append(element)
+print(ASCII_code_list)
+
+amount_of_last = 0
+for i in range(0, len(ASCII_code_list) - 1):
+       if ASCII_code_list[i] == ASCII_code_list[len(ASCII_code_list) - 1]:
+              amount_of_last += 1
+       else:
+              continue
+print(f'Количество последних элементов: {amount_of_last}')
+
+print(sorted(ASCII_code_list, reverse=True))
 
