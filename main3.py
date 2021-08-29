@@ -516,6 +516,26 @@ s = 'hello, WORLD! I am learning Python.'
 
 # print('abc'.islower()) # True. Все маленькие
 # print('ab;c'.islower()) # True
+# print(' '.isspace()) # True
+# print('This Is A Title'.istitle()) # True
+
+# print('aa'.center(10, '-')) # ----aa---- (весго 10 символов, аа по центру).
+# print('aa'.center(2, '-')) # aa
+# print('   .py'.lstrip()) # .py (обрезает пробельные символы с левой стороны)
+# print('py   '.rstrip()) # .py (обрезает пробельные символы с правой стороны)
+# print('https://www.python.org'.lstrip(':/pths')) # www.python.org (удалены те символы, что встретились в аргументе)
+# print('py.$$;'.rstrip('$;.')) # py
+# print('https://www.python.org'.lstrip(':/htps').rstrip('.org')) # www.python
+# print(' www.python.org/ '.strip(' /org.w')) # python (удаляет сразу с двух сторон )
+
+# st = 'Я изучаю Nuthon. Мне нравится Nuthon. Nuthon очень интересный язык программирования.'
+# print(st.replace('Nuthon', 'Python'))
+
+# print('-'.join(('a', 'b', 'c'))) # a-b-c (join - приниает разделитель для кортежика и выводит в строку)
+# print(':'.join('Hello')) # H:e:l:l:o (строка тоже итерируемая)
+# print('Строка разделенная пробелами'.split()) # ['Строка', 'разделенная', 'пробелами'] - разделяет по пробелам и создает список
+# print('Строка разделенная пробелами'.split(' ', 1)) # ['Строка', 'разделенная пробелами']
+
 
 
 ##############################
@@ -539,8 +559,6 @@ s = 'hello, WORLD! I am learning Python.'
 # print(digits)
 
 ##############################
-#                                               Регулярные выражения
-##############################
 # s = 'hello, WORLD! I am learning Python.'
 # print(s.index('Python')) # 28
 # print(s.index('cPython')) # Выдасть ошибку
@@ -559,4 +577,65 @@ s = 'hello, WORLD! I am learning Python.'
 # else:
 #        print(s.find('f'), s.rfind('f'))
 
+##############################
+# s = 'Я изучаю Nuthon. Мне нравится Nuthon. Nuthon очень интересный язык программирования.'
+# print(s.replace('Nuthon', 'Python', 2)) # Заменяет только два раза
 
+##############################
+# my_str = 'Замените в этой строке все появления буквы \'о\' на букву \'О\', кроме первого и последнего вхождения'
+# first = my_str.find('о')
+# last = my_str.rfind('о')
+# my_str = my_str[0:first + 1] + my_str[first + 1:last].replace('о', 'О') + my_str[last:]
+# print(my_str)
+
+##############################
+# s = '-'
+# seq = ('a', 'b', 'c')
+# print(s.join(seq)) # a-b-c (join - приниает разделитель для кортежика и выводит в строку)
+#
+# print(':'.join('Hello')) # H:e:l:l:o (строка тоже итерируемая)
+
+# print('Строка разделенная пробелами'.split()) # ['Строка', 'разделенная', 'пробелами']
+
+##############################
+# a = list(map(int, input('-> ').split()))
+# print(a) # [2, 3, 1, 2]
+
+##############################
+# Задача: вывести фамилию и инициалы
+# a = input('Введите ФИО: ').split()
+# print(a[0], end=' ')
+# for i in range(1, len(a)):
+#     print(a[i][0] + '.', end=' ')
+
+##############################
+# a = input('Введите строку: ').split()
+# print('*'.join(a))
+
+##############################
+#                                               Регулярные выражения
+##############################
+import re
+
+# s = 'Я ищу совпадения в 2021 году. И я их найду в 2 счёта.'
+# reg = 'я'
+#
+# print(re.findall(reg, s)) # ['я', 'я'] (reg - что мы ищем, s - где мы ищем)
+#
+# reg = 'совпадения'
+# print(re.search(reg, s)) # <re.Match object; span=(6, 16), match='совпадения'> - с 6 по 16 элемент найден
+# print(re.search(reg, s).span()) # (6, 16)
+# print(re.search(reg, s).start()) # 6
+# print(re.search(reg, s).end()) # 16
+#
+# print(re.match(reg, s)) # None (потому что производит поиск только в начале строки)
+#
+# reg = 'Я ищу'
+# print(re.match(reg, s)) # <re.Match object; span=(0, 5), match='Я ищу'>
+
+s = 'Я ищу совпадения в 2021 году. И я их найду в 2 счёта.'
+reg = 'я'
+print(re.split(reg, s)) # ['Я ищу совпадени', ' в 2021 году. И ', ' их найду в 2 счёта.']
+
+reg = '\.'
+print(re.split(reg, s)) # ['Я ищу совпадения в 2021 году', ' И я их найду в 2 счёта', '']   \. , потому что точка служебный символ
