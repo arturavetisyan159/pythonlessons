@@ -497,6 +497,26 @@ s = 'hello, WORLD! I am learning Python.'
 '''Если символ в s.find() не найден, выводится -1.'''
 # print(s.find('Python', 0, 30)) # -1
 # print(s.find('Python', 0, 40)) # 28
+# print(s.index('Python')) # 28
+# print(s.index('cPython')) # Выдасть ошибку, в отличие от find()
+# print(s.rfind('h')) # находит последний индекс искомого элемента
+# print(s.rindex('al')) # получаем тогда ошибку, в отличие от find()
+
+# print(s.endswith('on.')) # True (заканчивается ли?)
+# print(s.endswith('lo', 3, 5)) # True (от 4 до 5 не вкл.)
+# print(s.endswith('lo', 3, 6)) # False
+
+# print('abc123'.isalnum()) # True. Состоит ли строка только из букв и цифр?
+# print('abc$123'.isalnum()) # False. Потому что есть еще и какой то зак $
+# print('assasa'.isalpha()) # True. Состоит ли строка только из букв?
+# print('12121'.isdigit()) # True. Состоит ли строка только из цифр?
+
+# print('abc123'.isidentifier()) # True. Проверка, может ли быть идентификатором для создания переменной?
+# print('123abc'.isidentifier()) # False. Потому что вначале цифры.
+
+# print('abc'.islower()) # True. Все маленькие
+# print('ab;c'.islower()) # True
+
 
 ##############################
 # Задача: поменять местами два слова, написанные через пробел
@@ -521,8 +541,22 @@ s = 'hello, WORLD! I am learning Python.'
 ##############################
 #                                               Регулярные выражения
 ##############################
+# s = 'hello, WORLD! I am learning Python.'
+# print(s.index('Python')) # 28
+# print(s.index('cPython')) # Выдасть ошибку
 
+##############################
+# Задача: вывести то, что между скобочек
+# test = 'Дана ст(рока символов, среди которыхх есть одна открыв)ающаяся'
+# print(test[test.index('(') + 1: test.index(')')])
 
-
+##############################
+# s = input('-> ')
+# if s.count('f') == 1:
+#        print(s.find('f'))
+# elif s.count('f') == 0:
+#        print('буквы f в строке нет')
+# else:
+#        print(s.find('f'), s.rfind('f'))
 
 
