@@ -424,41 +424,105 @@ from typing import Type
 # print(ord('a')) # 97
 
 ##############################
-my_str = 'Test string for me'
-print()
-def asci_code_list_converter(stroka):
-       asci_list = []
-       for el in stroka:
-              asci_list.append(ord(el))
-       return asci_list
+# Задача:
 
-ASCII_code_list = asci_code_list_converter(my_str)
-print(f'ASCII коды: {ASCII_code_list}')
+# my_str = 'Test string for me'
+# print()
+# def asci_code_list_converter(stroka):
+#        asci_list = []
+#        for el in stroka:
+#               asci_list.append(ord(el))
+#        return asci_list
+#
+# ASCII_code_list = asci_code_list_converter(my_str)
+# print(f'ASCII коды: {ASCII_code_list}')
+#
+# sum = 0
+# for elem in ASCII_code_list:
+#        sum += elem
+# ASCII_code_list = [int(round(sum/len(ASCII_code_list))), *ASCII_code_list]
+# print(f'Среднее арифметическое: {ASCII_code_list}')
+#
+# new_str = input('-> ')
+# new_str = new_str[0:4]
+# new_code_list = asci_code_list_converter(new_str)
+#
+# for element in new_code_list:
+#        if element in ASCII_code_list:
+#               continue
+#        else:
+#               ASCII_code_list.append(element)
+# print(ASCII_code_list)
+#
+# amount_of_last = 0
+# for i in range(0, len(ASCII_code_list) - 1):
+#        if ASCII_code_list[i] == ASCII_code_list[len(ASCII_code_list) - 1]:
+#               amount_of_last += 1
+#        else:
+#               continue
+# print(f'Количество последних элементов: {amount_of_last}')
+#
+# print(sorted(ASCII_code_list, reverse=True))
 
-sum = 0
-for elem in ASCII_code_list:
-       sum += elem
-ASCII_code_list = [int(round(sum/len(ASCII_code_list))), *ASCII_code_list]
-print(f'Среднее арифметическое: {ASCII_code_list}')
+##############################
+# print(ord('a')) # 97
+# print(chr(97)) # a
 
-new_str = input('-> ')
-new_str = new_str[0:4]
-new_code_list = asci_code_list_converter(new_str)
+##############################
+# a = 122
+# b = 97
+# for i in range(b, a+1):
+#        print(chr(i), end=' ')
 
-for element in new_code_list:
-       if element in ASCII_code_list:
-              continue
-       else:
-              ASCII_code_list.append(element)
-print(ASCII_code_list)
+##############################
+# my_str = 'Test'
+# sum = 0
+# for el in my_str:
+#        sum += ord(el)
+# print(sum) # 416
 
-amount_of_last = 0
-for i in range(0, len(ASCII_code_list) - 1):
-       if ASCII_code_list[i] == ASCII_code_list[len(ASCII_code_list) - 1]:
-              amount_of_last += 1
-       else:
-              continue
-print(f'Количество последних элементов: {amount_of_last}')
+##############################
 
-print(sorted(ASCII_code_list, reverse=True))
+s = 'hello, WORLD! I am learning Python.'
+# print(s.capitalize()) # этот метод приводит 1-ую букву в верхн. регистр, остальные в нижний "Hello, world! i am learning python."
+# print(s.lower()) # переводит все буквы в нижний регистр
+# print(s.upper()) # переводит все буквы в верхний регистр
+# print(s.swapcase()) # переводит каждую букву строки в противоположный регистр
+# print(s.title()) # переводит каждую первую букву слова в верхний регистр
+
+# print(s.count('h')) # ищет количество символов "h"
+# print(s.count('h', 1, 6)) # ищет количество символов "h" ! с 1-го индекса до 6-го(не включительно) !
+# print(s.find('h')) # ищет индекс первого вхождения текущего элемента. # 0
+# print(s.find('Python')) # 28
+'''Если символ в s.find() не найден, выводится -1.'''
+# print(s.find('Python', 0, 30)) # -1
+# print(s.find('Python', 0, 40)) # 28
+
+##############################
+# Задача: поменять местами два слова, написанные через пробел
+
+# s = input('Введите два слова через пробел: ')
+# space = s.find(' ')
+# s2 = s[space+1:len(s)]
+# s1 = s[0:space]
+# print(s2 + ' ' + s1)
+
+##############################
+# Задача: добавить в список все цифры в строке.
+
+# s = 'ab12c59p7dq'
+# nums = [str(i) for i in range(0, 10)]
+# digits = []
+# for el in s:
+#        if el in nums:
+#               digits.append(int(el))
+# print(digits)
+
+##############################
+#                                               Регулярные выражения
+##############################
+
+
+
+
 
