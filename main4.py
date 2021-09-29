@@ -65,7 +65,7 @@ import re
 #     f.close()
 
 ################################
-# f = open("test.txt", "r")
+# f = open("test2.txt", "r")
 # counter = len(f.readlines())
 # print(counter)
 # f.close()
@@ -145,7 +145,7 @@ import re
 #         line = line.replace("Строка", "Линия-")
 #         fw.write(line)
 
-###############################
+#####################################
 
 # def words_list_maker(st):
 #     resWordList = []
@@ -198,4 +198,28 @@ import os
 
 # os.rename('nested1', "test1") # Переименовывает папку.
 
-os.rename('res_1.txt', 'test1/test.txt') # ПЕРЕИМЕНОВЫВАЯ, переносит в папку.
+# os.rename('test1/test2.txt', 'test1/new/test2.txt') # ПЕРЕИМЕНОВЫВАЯ, переносит в папку.
+
+# os.rmdir("folder") # Удаляет папку "folder"
+
+# os.walk(folder_name, topdown=True) # Идет по дереву сверху вниз или снизу вверх и выводит название корневой папки, список подпапок и список файлов
+
+# for root, dirs, file in os.walk('test1', topdown=True):
+#     print("Root", root)
+#     print("Subdirs", dirs)
+#     print("Files", file)
+
+# for root, dirs, file in os.walk('test1', topdown=True):
+#     if len(os.listdir(root)) == 0:
+#         os.rmdir(root)
+#         print('Директория', root, "была удалена.")
+
+import os.path
+# print(os.path.split(r"C:\Users\Артур Аветисян\Desktop\pythonlessons\test1\new\test2.txt")) # split разделяет на кортежи - в первый кортеж- все что жо последнего слеша, во второй - то что после последнего слеша.
+# print(os.path.dirname(r"C:\Users\Артур Аветисян\Desktop\pythonlessons\test1\new\test2.txt")) # возвращает первй кортеж
+# print(os.path.basename(r'C:\Users\Артур Аветисян\Desktop\pythonlessons\test1\new\test2.txt')) # возвращает второй кортеж
+
+# print(os.path.join(r"C:\Users\Артур Аветисян\Desktop\pythonlessons\test1", 'new')) # просто совмщает в один путь, добавляя слешы.
+
+
+
