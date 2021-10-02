@@ -221,5 +221,43 @@ import os.path
 
 # print(os.path.join(r"C:\Users\Артур Аветисян\Desktop\pythonlessons\test1", 'new')) # просто совмщает в один путь, добавляя слешы.
 
+###########################
+# Задание.
+
+# dirs = ["Work/F1", "Work/F2/F21"]
+# for i in dirs:
+#     os.makedirs(i)
+
+# files = {
+#     "Work": ["w.txt"],
+#     "Work/F1": ["f11.txt", "f12.txt", "f13.txt"],
+#     "Work/F2/F21": ["F211.txt", "F212.txt"]
+# }
+# for i, files in files.items():
+#     for file in files:
+#         file_path = os.path.join(i, file)
+#         open(file_path, "w").write(file_path)
+# print("Cверху вниз")
+# for direct, folder, file in os.walk("Work"):
+#     print(direct, folder, file)
+# print("Снизу вверх")
+# for direct, folder, file in os.walk("Work", topdown=False):
+#     print(direct, folder, file)
+
+#######################
+# ДЗ задание 1.
+
+# res_list = []
+
+# for dir, folders, files in os.walk("Work"):
+#     for direction in folders:
+#         res_list.append(f"{dir}//{direction}")
+#     for file in files:
+#         res_list.append(f"{dir}//{file}")
+#     break
+# print(res_list)
+
+#########################
+
 
 
