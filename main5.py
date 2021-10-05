@@ -20,17 +20,38 @@
 # print(isinstance(p1, Point)) # True (принадлежит ли экземпляр к этому классу)
 
 
-class Point:
-    """Класс для предоставления координат точек на плоскости"""
-    x = 1
-    y = 1
+# class Point:
+#     """Класс для предоставления координат точек на плоскости"""
+#     x = 1
+#     y = 1
 
-    def set_coords(self):
-        print(self.__dict__)
+#     def set_coords(self, x, y):
+#         self.x = x
+#         self.y = y
 
+# p1 = Point()
+# p1.set_coords(5, 10)
+# # Можно сделать вот так:
+# Point.set_coords(p1, 3, 1)
 
+# p2 = Point()
+# p2.set_coords(3, 8)
+# print(p2.__dict__)
 
-p1 = Point()
-p1.x = 5
-p1.y = 10
-p1.set_coords() # {'x': 5, 'y': 10}
+class Person:
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+        self.qual = 0
+    
+    def info(self):
+        print("Информация:", self.name, self.surname)
+
+    def quality(self, point):
+        self.qual = self.qual + point
+        print("Квалификация:", self.qual)
+
+first_person  = Person("Артур", "Аветисян")
+first_person.info()
+first_person.quality(2)
+first_person.quality(1)
