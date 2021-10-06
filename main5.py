@@ -38,20 +38,108 @@
 # p2.set_coords(3, 8)
 # print(p2.__dict__)
 
-class Person:
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
-        self.qual = 0
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#         self.qual = 0
     
-    def info(self):
-        print("Информация:", self.name, self.surname)
+#     def info(self):
+#         print("Информация:", self.name, self.surname)
 
-    def quality(self, point):
-        self.qual = self.qual + point
-        print("Квалификация:", self.qual)
+#     def quality(self, point):
+#         self.qual = self.qual + point
+#         print("Квалификация:", self.qual)
 
-first_person  = Person("Артур", "Аветисян")
-first_person.info()
-first_person.quality(2)
-first_person.quality(1)
+# first_person  = Person("Артур", "Аветисян")
+# first_person.info()
+# first_person.quality(2)
+# first_person.quality(1)
+
+#########################
+
+# class Point:
+#     counter = 0
+
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#         Point.counter += 1
+
+#     def __checkValue(z):
+#         if (isinstance(z, int) or isinstance(z, float)):
+#             return True
+#         return  False
+    
+#     def setValue(self, x, y):
+#         if Point.__checkValue(x) and Point.__checkValue(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть чсилами!")
+
+#     def setValue_x(self, x):
+#         if Point.__checkValue(x):
+#             self.__x = x
+#         else:
+#             print("Координата должна быть числовая!")
+
+#     def setValue_y(self, y):
+#         if Point.__checkValue(y):
+#             self.__y = y
+#         else:
+#             print("Координата должна быть числовая!")
+    
+#     def getValue(self):
+#         return f"{self.__x}, {self.__y}"
+
+#     def getValue_x(self):
+#         return self.__x
+
+#     def getValue_y(self):
+#         return self.__y
+
+# first = Point(5, 10)
+# first.setValue(6, 15)
+# print(first.getValue())
+
+# first.setValue_x(10)
+# print(first.getValue())
+
+# print(first.getValue_x())
+# print(first.getValue_y())
+
+####################
+class Rectangle:
+
+    def __init__(self, w=0, h=0):
+        self.__width = w
+        self.__height = h
+    
+    def setValue(self, w, h):
+        self.__width = w
+        self.__height = h
+
+    def getValue(self):
+        return self.__width, self.__height
+    
+    def getSquare(self):
+        return self.__height*self.__width
+
+    def getPerim(self):
+        return (self.__width+self.__height)*2
+    
+    def getDiagon(self):
+        return (self.__height**2 + self.__width**2)**(-2)
+
+    def printFigure(self):
+        for i in range(0, self.__height):
+            print("*"*self.__width)
+
+p1 = Rectangle(10, 12)
+p1.setValue(5, 2)
+print(p1.getValue())
+print(p1.getSquare())
+print(p1.getPerim())
+print(p1.getDiagon())
+p1.printFigure()
