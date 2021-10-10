@@ -233,35 +233,67 @@
 #######################
 # Задача кг в фунты
 
-class Converter:
+# class Converter:
 
-    def __init__(self, kg=0, f=0):
-        self.__kg = kg
-        self.__f = f
+#     def __init__(self, kg=0, f=0):
+#         self.__kg = kg
+#         self.__f = f
     
-    def __check_value(item):
-        if isinstance(item, int) or isinstance(item, float):
+#     def __check_value(item):
+#         if isinstance(item, int) or isinstance(item, float):
+#             return True
+#         return False
+
+#     @property
+#     def kg_get(self):
+#         return self.__kg
+
+#     @kg_get.setter
+#     def kg_get(self, kg):
+#         if Converter.__check_value(kg):
+#             self.__kg = kg
+#         else:
+#             print("Неправильный формат данных.")
+
+#     def converter(self):
+#         self.__f = self.__kg * 2.985
+#         return self.__f
+
+# p1 = Converter()
+# p1.kg_get = 12
+# kg = p1.kg_get
+
+# print(kg, "kg", "=>", p1.converter(), "fnt")
+# print(p1.kg_get)
+
+########################### Объекты-свойства (property)
+
+class Point:
+    def __init__(self, x=0, y=0):
+        self.__x = x
+        self.__y = y
+
+    def __checkValue(x):
+        if isinstance(x, int):
             return True
         return False
 
     @property
-    def kg_get(self):
-        return self.__kg
+    def coordX(self):
+        return self.__x
 
-    @kg_get.setter
-    def kg_get(self, kg):
-        if Converter.__check_value(kg):
-            self.__kg = kg
+    @coordX.setter
+    def coordX(self, x):
+        if Point.__checkValue(x):
+            self.__x = x
         else:
-            print("Неправильный формат данных.")
+            raise ValueError("Неверный формат данных")
+    
+    @coordX.deleter
+    def coordX(self):
+        print("Удаление свойства")
+        del self.__x
 
-    def converter(self):
-        self.__f = self.__kg * 2.985
-        return self.__f
+    coordX = property(__getCoordX, __setCoordX, __delCoordX)
 
-p1 = Converter()
-p1.kg_get = 12
-kg = p1.kg_get
 
-print(kg, "kg", "=>", p1.converter(), "fnt")
-print(p1.kg_get)
