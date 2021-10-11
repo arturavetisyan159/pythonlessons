@@ -268,31 +268,112 @@
 
 ########################### Объекты-свойства (property)
 
-class Point:
-    def __init__(self, x=0, y=0):
-        self.__x = x
-        self.__y = y
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
 
-    def __checkValue(x):
-        if isinstance(x, int):
-            return True
-        return False
+#     def __checkValue(x):
+#         if isinstance(x, int):
+#             return True
+#         return False
 
-    @property
-    def coordX(self):
-        return self.__x
+#     @property
+#     def coordX(self):
+#         return self.__x
 
-    @coordX.setter
-    def coordX(self, x):
-        if Point.__checkValue(x):
-            self.__x = x
-        else:
-            raise ValueError("Неверный формат данных")
+#     @coordX.setter
+#     def coordX(self, x):
+#         if Point.__checkValue(x):
+#             self.__x = x
+#         else:
+#             raise ValueError("Неверный формат данных")
     
-    @coordX.deleter
-    def coordX(self):
-        print("Удаление свойства")
-        del self.__x
+#     @coordX.deleter
+#     def coordX(self):
+#         print("Удаление свойства")
+#         del self.__x
 
 
+##############################
 
+# Методы бывают: статические, класса (принимают класс в качестве параметра), экземпляра класса.
+# Для работы со статическими методами мы должны использовать декоратор @staticmethod
+
+# class Point:
+#     __count = 0
+
+#     def __init__(self, x=0, y=0):
+#         Point.__count += 1
+#         self.__x = x
+#         self.__y = y
+
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+
+
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print(Point.get_count())
+# print(p3.get_count())
+
+############################
+
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+
+# print(Change.inc(10), Change.dec(10))
+
+############################
+
+# cls
+# @classmethod
+
+class Date:
+    def __init__(self, day=0, month=0, year=0):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    @classmethod
+    def from_string(cls, date_str):
+        day, month, year = map(int, date_str.split("."))
+        date1 = cls(day, month, year)
+        return date1
+
+    @staticmethod
+    def is_date_valid(date_as_string):
+        if date_as_string.count(".") == 2:
+            day, month, year = map(int, date_as_string.split("."))
+            return day <= 31 and month <= 12 and year <= 3999
+
+    def string_to_db(self):
+        return f"{self.year}-{self.month}-{self.day}"
+
+# date = Date.from_string("23/10/2021")
+# print(date.string_to_db())
+# date2 = Date.from_string("11.10.2022")
+# print(date2.string_to_db())
+
+dates = [
+    "30.22.2021",
+    "30-12-2021",
+    "30.12.2002",
+    "30.12.2021"
+]
+
+for i in dates:
+    if Date.is_date_valid(i):
+        date = Date.from_string(i)
+        a = date.string_to_db()
+        print(a)
+    else:
+        print("Неправильная дата или формат строки с датой!")
