@@ -294,6 +294,5 @@ class Point:
         print("Удаление свойства")
         del self.__x
 
-    coordX = property(__getCoordX, __setCoordX, __delCoordX)
 
 
