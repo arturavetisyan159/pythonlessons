@@ -337,43 +337,168 @@
 # cls
 # @classmethod
 
-class Date:
-    def __init__(self, day=0, month=0, year=0):
-        self.day = day
-        self.month = month
-        self.year = year
+# class Date:
+#     def __init__(self, day=0, month=0, year=0):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#
+#     @classmethod
+#     def from_string(cls, date_str):
+#         day, month, year = map(int, date_str.split("."))
+#         date1 = cls(day, month, year)
+#         return date1
+#
+#     @staticmethod
+#     def is_date_valid(date_as_string):
+#         if date_as_string.count(".") == 2:
+#             day, month, year = map(int, date_as_string.split("."))
+#             return day <= 31 and month <= 12 and year <= 3999
+#
+#     def string_to_db(self):
+#         return f"{self.year}-{self.month}-{self.day}"
+#
+# # date = Date.from_string("23/10/2021")
+# # print(date.string_to_db())
+# # date2 = Date.from_string("11.10.2022")
+# # print(date2.string_to_db())
+#
+# dates = [
+#     "30.22.2021",
+#     "30-12-2021",
+#     "30.12.2002",
+#     "30.12.2021"
+# ]
+#
+# for i in dates:
+#     if Date.is_date_valid(i):
+#         date = Date.from_string(i)
+#         a = date.string_to_db()
+#         print(a)
+#     else:
+#         print("Неправильная дата или формат строки с датой!")
 
-    @classmethod
-    def from_string(cls, date_str):
-        day, month, year = map(int, date_str.split("."))
-        date1 = cls(day, month, year)
-        return date1
+####################
+# ЗАДАНИЕ.
 
-    @staticmethod
-    def is_date_valid(date_as_string):
-        if date_as_string.count(".") == 2:
-            day, month, year = map(int, date_as_string.split("."))
-            return day <= 31 and month <= 12 and year <= 3999
+# class Account:
+#     rate_usd = 0.014
+#     rate_eur = 0.012
+#     suffix = "RUB"
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, surname, num, percent, value=0):
+#         self.surname = surname
+#         self.num = num
+#         self.percent = percent
+#         self.value = value
+#         self.value = value
+#         print(f"Счет #{self.num}, принадлежащий {self.surname}, был октрыт")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет #{self.num}, принадлежащий {self.surname}, был закрты")
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс: {self.value} {Account.suffix}")
+#
+#     def edit_owner(self, surname):
+#         self.surname = surname
+#
+#     def print_info(self):
+#         print("Информация о счете:")
+#         print("-" * 20)
+#         print(f"#{self.num}")
+#         print(f"Владелец: {self.surname}")
+#         self.print_balance()
+#         print(f"Процент: {self.percent : .0%}")
+#         print("-" * 20)
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.value, Account.rate_usd)
+#         print(f"Состояние счета: {usd_val} {Account.suffix_usd}.")
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.value, Account.rate_eur)
+#         print(f"Состояние счета: {eur_val} {Account.suffix_eur}")
+#
+#     def add_percents(self):
+#         self.value += self.value * self.percent
+#         print("Проценты были успешно начислены!")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}.")
+#         else:
+#             self.value = self.value - val
+#             print(f"{val} {Account.suffix} были успешно сняты.")
+#             self.print_balance()
+#
+#     def add_money(self, val):
+#         self.value += val
+#         print(f"{val} {Account.suffix} быди успешно добавлены.")
+#         self.print_balance()
+#
+#
+# acc = Account("Долгих", 12321, 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+# Account.set_usd_rate(3)
+# Account.set_eur_rate(4)
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# acc.edit_owner("Саяхов")
+# acc.print_info()
+# print()
+# acc.add_percents()
+# print()
+# acc.withdraw_money(300)
+# acc.withdraw_money(3000)
+# print()
+# acc.add_money(5000)
+# acc.withdraw_money(3000)
 
-    def string_to_db(self):
-        return f"{self.year}-{self.month}-{self.day}"
 
-# date = Date.from_string("23/10/2021")
-# print(date.string_to_db())
-# date2 = Date.from_string("11.10.2022")
-# print(date2.string_to_db())
 
-dates = [
-    "30.22.2021",
-    "30-12-2021",
-    "30.12.2002",
-    "30.12.2021"
-]
 
-for i in dates:
-    if Date.is_date_valid(i):
-        date = Date.from_string(i)
-        a = date.string_to_db()
-        print(a)
-    else:
-        print("Неправильная дата или формат строки с датой!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
