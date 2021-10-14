@@ -475,6 +475,71 @@
 # acc.add_money(5000)
 # acc.withdraw_money(3000)
 
+class Time:
+    timezone = 0
+
+    def __init__(self, moment):
+        if Time.check_time(moment):
+            hour = int(moment.split(':')[0])
+            minute = int(moment.split(':')[1])
+            second = int(moment.split(':')[2])
+            self.hour = hour
+            self.minute = minute
+            self.second = second
+            if Time.timezone >= 0:
+                print(f"Отметка времени: {self.hour}:{self.minute}:{self.second} UTC+{Time.timezone}")
+                print("--------------------")
+            else:
+                print(f"Отметка времени: {self.hour}:{self.minute}:{self.second} UTC{Time.timezone}")
+                print("--------------------")
+        else:
+            print("Неверные данные.")
+            print("--------------------")
+
+    @classmethod
+    def timezone_change(cls, zone):
+        if isinstance(zone, int) and zone >= -12 and zone <= 14:
+            cls.timezone = zone
+            if cls.timezone >= 0:
+                print(f"UTC+{cls.timezone}")
+            else:
+                print(f"UTC{cls.timezone}")
+        else:
+            print("Неверно введен часовой пояс!")
+
+    @staticmethod
+    def check_time(moment):
+        if moment.count(":") != 2:
+            return False
+        else:
+            moment = moment.split(':')
+            hr = int(moment[0])
+            min = int(moment[1])
+            sec = int(moment[2])
+            if hr > 24 or hr < 0 or min > 59 or min < 0 or sec > 59 or sec < 0:
+                return False
+            return True
+
+    @staticmethod
+    def sec_to_moment(second):
+        second
+
+    @staticmethod
+    def moment_to_sec(moment):
+        if 
+
+
+
+
+
+
+
+
+
+t1 = Time("21:31:11")
+Time.timezone_change(-2)
+
+
 
 
 
