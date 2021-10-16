@@ -496,6 +496,11 @@ class Time:
             print("Неверные данные.")
             print("--------------------")
 
+    def __del__(self):
+        print('*'*50)
+        print(f"Отметка времени", end=' ')
+        self.print_time()
+
     @classmethod
     def timezone_change(cls, zone):
         if isinstance(zone, int) and zone >= -12 and zone <= 14:
@@ -522,11 +527,14 @@ class Time:
 
     @staticmethod
     def sec_to_moment(second):
-        second
+        pass
 
     @staticmethod
     def moment_to_sec(moment):
-        if 
+        pass
+
+    def print_time(self):
+        print(f"{self.hour}{self.minute}{self.second}")
 
 
 
