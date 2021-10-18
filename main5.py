@@ -483,29 +483,106 @@ import math
 ########################
 # Наследование.
 
-class Point:
-    def __init__(self, x=0, y=0):
-        self.__x = x
-        self.__y = y
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
 
-    def __str__(self):
-        return f"{self.__x}, {self.__y}"
+#     def __str__(self):
+#         return f"{self.__x}, {self.__y}"
+
+# class Prop:
+#     def __init__(self, sp:Point, ep:Point, color:str = "blue", width:int = 1):
+#         print("Инициализатор базового класса")
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self.__width = width
+
+#     def get_width(self):
+#         return self.__width
+
+    
+
+# class Line(Prop):
+#     def __init__(self, *args):
+#         print("Переопределенный инициализатор класса Line")
+#         super().__init__(*args)
+#         self.__width = 5
+
+
+#     def draw_line(self):
+#         print(f"Рисование линии: ({self._sp}), ({self._ep}), {self._color}, {self.__width}")
+
+        
+# class Rect(Prop):
+    
+#     def draw_rect(self):
+#         print(f"Рисование прямоугольника: ({self._sp}), ({self._ep}), {self._color}, {self.__width}")
+
+
+# line = Line(Point(1, 2), Point(10, 20))
+# print(line.__dict__)
+# line.draw_line()
+
+class Figure:
+    def __init__(self, color):
+        self.__color = color
+
+    @property
+    def color(self):
+        return self.__color
+
+    @color.setter
+    def color(self, c):
+        self.__color = c
+
+
+class Rectangle(Figure):
+    def __init__(self, width, height, color):
+        super().__init__(color)
+        self.__width = width
+        self.__height = height
+
+    @property
+    def width(self):
+        return self.__width
+
+    @width.setter
+    def width(self, w):
+        if w > 0:
+            self.__width = w
+        else:
+            raise ValueError
+
+    @property
+    def height(self):
+        return self.__height
+
+    @height.setter
+    def height(self, h):
+        if h > 0:
+            self.__height = h
+        else:
+            raise ValueError
+
+    def area(self):
+        return f"Площадь равна {self.__height * self.__width}"
+
+rect = Rectangle(10, 20, "green")
+print(rect.width)
+rect.width = 11
+print(rect.width)
+
+    
 
 
 
 
-class Line:
-    def __init__(self, sp:Point, ep:Point, color:str = "blue", width:int = 1):
-        self._sp = sp
-        self._ep = ep
-        self._color = color
-        self._width = width
 
-    def draw_line(self):
-        print(f"Рисование линии: ({self._sp}), ({self._ep}), {self._color}, {self._width}")
 
-line = Line(Point(1, 2), Point(10, 20))
-line.draw_line()
+
+
 
 
 
