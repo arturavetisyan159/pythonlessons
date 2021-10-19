@@ -604,14 +604,112 @@ import math
 # print(rect.width)
 # rect.width = 11
 # print(rect.width)
+# print(rect.area())
+
+# class Liquid:
+#     def __init__(self, name, density):
+#         self.__name = name
+#         self.__density = density
+    
+#     @property
+#     def name(self):
+#         return self.__name
+
+#     @name.setter
+#     def name(self, n):
+#         self.__name = n
+
+#     @property
+#     def density(self):
+#         return self.__density 
+    
+#     @density.setter
+#     def density(self, d):
+#         if isinstance(d, int) or isinstance(d, float) and d >= 0:
+#             self.__density = d
+
+
+#     def change_density(self, dens):
+#         if isinstance(dens, int) or isinstance(dens, float) and dens >= 0:
+#             self.__density = dens
+#         else:
+#             print("Неправильно задано значение плотности.")
+
+#     def liquid_info(self):
+#         return f"{self.__name} с плотнотстью {self.__density} kg/m^3"
+    
+#     def count_volume(self, mass):
+#         result = round(mass / self.__density, 2)
+#         print(f"Объем {mass} kg жидкости \"{self.__name}\" равен {result} m^3")
+#         return result
+
+#     def count_mass(self, volume):
+#         result = round(volume * self.__density)
+#         print(f"Масса {volume} m^3 жидкости \"{self.__name}\" равна {result} kg")
+#         return result
+
+
+
+# class Alcohol(Liquid):
+#     def __init__(self, name, density, strength):
+#         super().__init__(name, density)
+#         self.__strength = strength
+
+#     @property
+#     def strength(self):
+#         return self.__strength
+    
+#     @strength.setter
+#     def strength(self, s):
+#         self.__strength = s
+
+#     def change_strength(self, s):
+#         self.__strength = s
+
+#     def liquid_info(self):
+#         return super().liquid_info() + f" крепость равна {self.__strength} %"
+
+
+
+# lqd1 = Liquid("Сок", 1500)
+# print(lqd1.liquid_info())
+# print(lqd1.name)
+# lqd1.count_volume(500)
+# lqd1.count_mass(0.5)
+
+# alco = Alcohol("Водка", 1000, 40)
+# print(alco.liquid_info())
+
+############################
+
+class Point:
+    def __init__(self, x=0, y=0):
+        self.__x = x
+        self.__y = y
+
+    def __str__(self):
+        return f"{self.__x}, {self.__y}"
+
+class Prop:
+    def __init__(self, sp:Point, ep:Point, color:str = "blue", width:int = 1):
+        print("Инициализатор базового класса")
+        self._sp = sp
+        self._ep = ep
+        self._color = color
+        self._width = width
+
+    def set_coord(self, sp, ep):
+        self._sp = sp
+        self._ep = ep
 
     
+class Line(Prop):
+    def draw_line(self):
+        print(f"Рисование линии: ({self._sp}), ({self._ep}), {self._color}, {self._width}")
 
 
-
-
-
-
+line = Line(Point(1, 2), Point(20, 30))
+line.draw_line()
 
 
 
