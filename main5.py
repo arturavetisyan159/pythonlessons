@@ -682,34 +682,103 @@ import math
 
 ############################
 
-class Point:
-    def __init__(self, x=0, y=0):
-        self.__x = x
-        self.__y = y
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
 
-    def __str__(self):
-        return f"{self.__x}, {self.__y}"
+#     def __str__(self):
+#         return f"{self.__x}, {self.__y}"
 
-class Prop:
-    def __init__(self, sp:Point, ep:Point, color:str = "blue", width:int = 1):
-        print("Инициализатор базового класса")
-        self._sp = sp
-        self._ep = ep
-        self._color = color
-        self._width = width
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
 
-    def set_coord(self, sp, ep):
-        self._sp = sp
-        self._ep = ep
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
 
+
+# class Prop:
+#     def __init__(self, sp:Point, ep:Point, color:str = "blue", width:int = 1):
+#         print("Инициализатор базового класса")
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+
+#     def set_coords(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#             print("Успешно измененно")
+#         else:
+#             print("Координаты должны быть числами!")
     
-class Line(Prop):
-    def draw_line(self):
-        print(f"Рисование линии: ({self._sp}), ({self._ep}), {self._color}, {self._width}")
+# class Line(Prop):
+#     def draw_line(self):
+#         print(f"Рисование линии: ({self._sp}), ({self._ep}), {self._color}, {self._width}")
+
+#     def set_coords(self, sp, ep):
+#         if sp.is_int() and ep.is_int():
+#             self._sp = sp
+#             self._ep = ep
+#             print("Координаты были успешно изменены.")
+#         else:
+#             print("Координаты должны быть числами!")
+
+# class Rect(Prop):
+#     def draw_rect(self):
+#         print(f"Рисование прямоугольника: ({self._sp}), ({self._ep}), {self._color}, {self._width}")
+
+# line = Line(Point(1, 2), Point(20, 30))
+# line.draw_line()
+# line.set_coords(Point(10, 20), Point(100, 200))
+# line.draw_line()
+# print()
+# rect = Rect(Point(5, 7), Point(50, 70))
+# rect.draw_rect()
+# rect.set_coords(Point(10, 20), Point(100, 200))
+# rect.draw_rect()
+
+######################################
+
+class Rect:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def show_rect(self):
+        print(f"Прямоугольник: \nШирина: {self.width} \nВысота: {self.height}")
 
 
-line = Line(Point(1, 2), Point(20, 30))
-line.draw_line()
+class RectFon(Rect):
+    def __init__(self, width, height, background):
+        super().__init__(width, height)
+        self.fon = background
+
+    def show_rect(self):
+        super().show_rect()
+        print(f"Фон: {self.fon}")
+
+
+class RectBorder(Rect):
+    def __init__(self, width, height, border):
+        super().__init__(width, height)
+        self.border = border
+
+    def show_rect(self):
+        super().show_rect()
+        print(f"Рамка: {self.border}")
+
+
+shape1 = RectFon(400, 200, "yellow")
+shape1.show_rect()
+print()
+shape2 = RectBorder(600, 300, "1px solid red")
+shape2.show_rect()
 
 
 
