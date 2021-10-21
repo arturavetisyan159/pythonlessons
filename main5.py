@@ -745,44 +745,293 @@ import math
 
 ######################################
 
-class Rect:
+# class Rect:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+
+#     def show_rect(self):
+#         print(f"Прямоугольник: \nШирина: {self.width} \nВысота: {self.height}")
+
+
+# class RectFon(Rect):
+#     def __init__(self, width, height, background):
+#         super().__init__(width, height)
+#         self.fon = background
+
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f"Фон: {self.fon}")
+
+
+# class RectBorder(Rect):
+#     def __init__(self, width, height, border):
+#         super().__init__(width, height)
+#         self.border = border
+
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f"Рамка: {self.border}")
+
+
+# shape1 = RectFon(400, 200, "yellow")
+# shape1.show_rect()
+# print()
+# shape2 = RectBorder(600, 300, "1px solid red")
+# shape2.show_rect()
+
+############################
+
+# class Liquid:
+#     def __init__(self, name, density):
+#         self.__name = name
+#         self.__density = density
+    
+#     @property
+#     def name(self):
+#         return self.__name
+
+#     @name.setter
+#     def name(self, n):
+#         self.__name = n
+
+#     @property
+#     def density(self):
+#         return self.__density 
+    
+#     @density.setter
+#     def density(self, d):
+#         if isinstance(d, int) or isinstance(d, float) and d >= 0:
+#             self.__density = d
+
+
+#     def change_density(self, dens):
+#         if isinstance(dens, int) or isinstance(dens, float) and dens >= 0:
+#             self.__density = dens
+#         else:
+#             print("Неправильно задано значение плотности.")
+
+#     def liquid_info(self):
+#         return f"{self.name} (плотнотсть = {self.density} kg/m^3)"
+    
+#     def count_volume(self, mass):
+#         result = round(mass / self.__density, 2)
+#         print(f"Объем {mass} kg жидкости \"{self.__name}\" равен {result} m^3")
+#         return result
+
+#     def count_mass(self, volume):
+#         result = round(volume * self.__density)
+#         print(f"Масса {volume} m^3 жидкости \"{self.__name}\" равна {result} kg")
+#         return result
+
+
+
+# class Alcohol(Liquid):
+#     def __init__(self, name, density, strength):
+#         super().__init__(name, density)
+#         self.__strength = strength
+
+#     @property
+#     def strength(self):
+#         return self.__strength
+    
+#     @strength.setter
+#     def strength(self, s):
+#         self.__strength = s
+
+#     def change_strength(self, s):
+#         self.__strength = s
+
+#     def count_volume(self, mass):
+#         res = super().count_volume(mass)
+#         result = res * self.strength / 100
+#         print(f"Объем алкоголя в {mass} кг {self.name} составляет {result} m^3")
+#         return res, result
+
+#     def count_mass(self, volume):
+#         value = super().count_mass(volume)
+#         result = value * self.strength
+#         print(f"Вес алкоголя {volume} m^3 {self.name} составляет {result} кг.")
+#         return value, result
+
+#     def liquid_info(self):
+#         return f"{self.name} (плотнотсть = {self.density} kg/m^3, крепость = {self.strength})"
+
+
+
+# lqd1 = Liquid("Сок", 1500)
+# print(lqd1.liquid_info())
+# print(lqd1.name)
+# lqd1.count_volume(500)
+# lqd1.count_mass(0.5)
+
+# alco = Alcohol("Водка", 1000, 40)
+# alco.count_volume(600)
+# print(alco.liquid_info())
+
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+
+#     def __str__(self):
+#         return f"{self.__x}, {self.__y}"
+
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
+
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
+
+
+# class Prop:
+#     def __init__(self, sp:Point, ep:Point, color:str = "blue", width:int = 1):
+#         print("Инициализатор базового класса")
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+
+#     def set_coords(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#             print("Успешно измененно")
+#         else:
+#             print("Координаты должны быть числами!")
+    
+# class Line(Prop):
+#     def draw_line(self):
+#         print(f"Рисование линии: ({self._sp}), ({self._ep}), {self._color}, {self._width}")
+
+#     def __set_one_coords(self, sp):
+#         if sp.is_int():
+#                 self._sp = sp
+#                 print("Координаты были успешно измененны.")
+#         else:
+#                 print("Координаты должны быть целочисленными!")
+
+#     def __set_two_coords(self, sp, ep):
+#         if sp.is_int() and ep.is_int():
+#                 self._sp = sp
+#                 self._ep = ep
+#                 print("Координаты были успешно изменены.")
+#         else:
+#                 print("Координаты должны быть числами!")
+
+
+#     def set_coords(self, sp, ep=None):
+#         if ep is None:
+#             self.__set_one_coords(sp)
+#         else:
+#             self.__set_two_coords(sp, ep)
+
+# line = Line(Point(1, 2), Point(20, 30))
+# line.draw_line()
+# line.set_coords(Point(10, 20), Point(100, 200))
+# line.draw_line()
+# line.set_coords(Point(-1, -2))
+# line.draw_line()
+
+#############################
+
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+
+#     def __str__(self):
+#         return f"{self.__x}, {self.__y}"
+
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
+
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
+
+
+# class Prop:
+#     def __init__(self, sp:Point, ep:Point, color:str = "blue", width:int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+
+#     def set_coords(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#             print("Успешно измененно")
+#         else:
+#             print("Координаты должны быть числами!")
+
+#     def draw(self):
+#         raise NotImplementedError("В дочернем классе не определен метод draw.")
+
+
+# class Line(Prop):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+
+
+# class Rect(Prop):
+#     def draw(self):
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}")
+
+
+# class Ellips(Prop):
+#     def draw(self):
+#         print(f"Рисование элипса: {self._sp}, {self._ep}, {self._color}, {self._width}")
+
+
+# figs = list()
+# figs.append(Line(Point(0, 0), Point(10, 10)))
+# figs.append(Line(Point(10, 10), Point(20, 20)))
+# figs.append(Rect(Point(50, 50), Point(100, 100)))
+# figs.append(Ellips(Point(-50, -50), Point(-100, -100)))
+
+# for fig in figs:
+#     fig.draw()
+
+class Table():
+    def __init__(self, width=None, height=None, radius=None):
+        if radius == None:
+            self.width = width
+            self.height = height
+        else:
+            self.radius = radius
+
+
+class RoundTable(Table):
+    def __init__(self, radius):
+        super().__init__(width=None, height=None, radius=radius)
+    
+    def calc_area(self):
+        return round(3.14 * self.radius**2, 2)
+
+
+class SquareTable(Table):
     def __init__(self, width, height):
-        self.width = width
-        self.height = height
+        super().__init__(width=width, height=height, radius=None)
 
-    def show_rect(self):
-        print(f"Прямоугольник: \nШирина: {self.width} \nВысота: {self.height}")
+    def calc_area(self):
+        return self.width * self.height
 
+t1 = SquareTable(10, 20)
+print(t1.__dict__)
+print(t1.calc_area())
 
-class RectFon(Rect):
-    def __init__(self, width, height, background):
-        super().__init__(width, height)
-        self.fon = background
-
-    def show_rect(self):
-        super().show_rect()
-        print(f"Фон: {self.fon}")
-
-
-class RectBorder(Rect):
-    def __init__(self, width, height, border):
-        super().__init__(width, height)
-        self.border = border
-
-    def show_rect(self):
-        super().show_rect()
-        print(f"Рамка: {self.border}")
-
-
-shape1 = RectFon(400, 200, "yellow")
-shape1.show_rect()
-print()
-shape2 = RectBorder(600, 300, "1px solid red")
-shape2.show_rect()
-
-
-
-
+t2 = RoundTable(11)
+print(t2.__dict__)
+print(t2.calc_area())
 
 
 
