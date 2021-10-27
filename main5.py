@@ -1001,37 +1001,58 @@ import math
 # for fig in figs:
 #     fig.draw()
 
-class Table():
-    def __init__(self, width=None, height=None, radius=None):
-        if radius == None:
-            self.width = width
-            self.height = height
-        else:
-            self.radius = radius
+# class Table():
+#     def __init__(self, width=None, height=None, radius=None):
+#         if radius == None:
+#             self.width = width
+#             self.height = height
+#         else:
+#             self.radius = radius
 
 
-class RoundTable(Table):
-    def __init__(self, radius):
-        super().__init__(width=None, height=None, radius=radius)
+# class RoundTable(Table):
+#     def __init__(self, radius):
+#         super().__init__(width=None, height=None, radius=radius)
     
-    def calc_area(self):
-        return round(3.14 * self.radius**2, 2)
+#     def calc_area(self):
+#         return round(3.14 * self.radius**2, 2)
 
 
-class SquareTable(Table):
-    def __init__(self, width, height):
-        super().__init__(width=width, height=height, radius=None)
+# class SquareTable(Table):
+#     def __init__(self, width, height):
+#         super().__init__(width=width, height=height, radius=None)
 
-    def calc_area(self):
-        return self.width * self.height
+#     def calc_area(self):
+#         return self.width * self.height
 
-t1 = SquareTable(10, 20)
-print(t1.__dict__)
-print(t1.calc_area())
+# t1 = SquareTable(10, 20)
+# print(t1.__dict__)
+# print(t1.calc_area())
 
-t2 = RoundTable(11)
-print(t2.__dict__)
-print(t2.calc_area())
+# t2 = RoundTable(11)
+# print(t2.__dict__)
+# print(t2.calc_area())
+
+######################################
+
+from abc import abstractmethod, ABC
+
+class Chess:
+    def draw(self):
+        print("Нарисовал шахматную доску!")
+
+    @abstractmethod
+    def move(self):
+        pass
+
+class Queen(Chess):
+    def move(self):
+        print("Ферзь перемещен на e2e4")
+
+
+q = Queen()
+q.move()
+    
 
 
 
