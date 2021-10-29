@@ -258,6 +258,6 @@ import os.path
 # print(res_list)
 
 #########################
-
-
+a = input("Как вас зовут?")
+print(f"Привет {a}!")
 
