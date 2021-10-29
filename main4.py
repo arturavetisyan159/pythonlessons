@@ -258,6 +258,23 @@ import os.path
 # print(res_list)
 
 #########################
-a = input("Как вас зовут?")
-print(f"Привет {a}!")
 
+#print(os.path.exists(r"C:\Users\Артур Аветисян\Desktop\pythonlessons\Work\w.txt"))
+
+#########################
+# import time
+
+# file_path = r"Work/F2/F21/F211.txt"
+
+# if os.path.exists(file_path):
+#     print("Файл существует.")
+#     print(f"Файл называется - {os.path.split(file_path)[1]}")
+#     print(f"Директория файла: {os.path.split(os.path.split(file_path)[0])[1]}")
+#     atime = os.path.getatime(file_path)
+#     print("Последний доступ к файлу:", time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(atime)))
+
+# else:
+#     print("Такого файла не существет!")
+
+###########################
+print(os.path.normcase('C:/User/admin/Documents'))
