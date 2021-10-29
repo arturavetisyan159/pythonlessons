@@ -39,8 +39,16 @@ class Clock:
         return Clock(res)
 
     def __isub__(self, other):
-        self.__sec = self.__sec - other.get_second()
-        return self.__sec
+        self.__sec -= other.get_second()
+        return self
+
+    def __imul__(self, other):
+        self.__sec *= other.get_second()
+        return self
+
+    def __ifloordiv__(self, other):
+        self.__sec //= other.get_second()
+        return self
 
 
 
@@ -59,4 +67,11 @@ print(f"c1 * c2 = {res.get_format_time()}")
 res = c1 % c2
 print(f"c1 % c2 = {res.get_format_time()}")
 c1 -= c2
-print(f"c1 -= c2 : {res.get_format_time()}")
+print(f"c1 -= c2 : {c1.get_format_time()}")
+c1 = Clock(600)
+c1 *= c2
+print(f"c1 *= c2 : {c1.get_format_time()}")
+c1 = Clock(600)
+c1 //= c2
+print(f"c1 //= c2 : {c1.get_format_time()}")
+c1 = Clock(600)
