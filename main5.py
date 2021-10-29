@@ -1,5 +1,7 @@
+from abc import abstractmethod
 from datetime import datetime
 import math
+from abc import abstractmethod, ABC
 
 
 # class Point:
@@ -1035,33 +1037,253 @@ import math
 
 ######################################
 
-from abc import abstractmethod, ABC
+# from abc import abstractmethod, ABC
 
-class Chess:
-    def draw(self):
-        print("Нарисовал шахматную доску!")
+# class Chess(ABC):
+#     def draw(self):
+#         print("Нарисовал шахматную доску!")
 
-    @abstractmethod
-    def move(self):
-        pass
+#     @abstractmethod
+#     def move(self):
+#         pass
 
-class Queen(Chess):
-    def move(self):
-        print("Ферзь перемещен на e2e4")
+# class Queen(Chess):
+#     def move(self):
+#         print("Ферзь перемещен на e2e4")
 
 
-q = Queen()
-q.move()
+# q = Queen()
+# q.draw()
+# q.move()
     
+######################################
+
+# class Currency(ABC):
+#     def __init__(self, value):
+#         self.__value = value
+
+#     @abstractmethod
+#     def change_currency(self):
+#         pass
+
+#     def print_value(self):
+#         print(self.__value, end=" ")
+
+#     @property
+#     def value(self):
+#         return self.__value
+
+#     @value.setter
+#     def value(self, v):
+#         self.__value = v
+
+# class Dollar(Currency):
+#     rate_usd = 74.16
+#     suffix_usd = "USD"
+
+#     def change_currency(self):
+#         res = self.value * Dollar.rate_usd
+#         return res
+
+#     def print_value(self):
+#         super().print_value()
+#         print(f"{Dollar.suffix_usd} = {self.change_currency()} RUB")
+
+
+# class Euro(Currency):
+#     rate_eur = 90.14
+#     suffix_eur = "EUR"
+
+#     def change_currency(self):
+#         res = self.value * Euro.rate_eur
+#         return res
+
+#     def print_value(self):
+#         super().print_value()
+#         print(f"{Euro.suffix_eur} = {self.change_currency()} RUB")
 
 
 
 
+# n = [Euro(112), Euro(91), Euro(3311)]
+# for elem in n:
+#     elem.print_value()
+
+# print()
+
+# usd = [Dollar(121), Dollar(11), Dollar(10)]
+# for elem in usd:
+#     elem.print_value()
+
+######################################
+
+# class Creature:
+#     def __init__(self, name):
+#         self.name = name
 
 
+# class Animal(Creature):
+#     def sleep(self):
+#         print(self.name + " is sleeping")
 
 
+# class Pet(Creature):
+#     def play(self):
+#         print(self.name + " is playing")
 
+
+# class Dog(Animal, Pet):
+#     def bark(self):
+#         print(self.name + " is barking")
+
+
+# bob = Dog("Bob")
+# bob.sleep()
+# bob.play()
+# bob.bark()
+
+################################
+
+# class A:
+#     def __init__(self):
+#         print("Инициализатор класса A")
+
+# class B(A):
+#     def __init__(self):
+#         print("Инициализатор класса B")
+
+#     def hi(self):
+#         print("B")
+
+# class C(A):
+#     def __init__(self):
+#         print("Инициализатор класса C")
+
+#     def hi(self):
+#         print("C")
+
+# class D(B, C):
+#     def __init__(self):
+#         B.__init__(self)
+#         C.__init__(self)
+#         print("Инициализатор класса D")
+
+#     def call_hi(self):
+#         C.hi(self)
+
+        
+# d = D()
+# d.call_hi()
+
+
+################################
+
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+    
+#     def __str__(self):
+#         return f"{self.__x, self.__y}"
+
+
+# class Styles:
+#     def __init__(self):
+#         print("Инициализатор Styles")
+#         # super().__init__()
+
+
+# class Pos:
+#     def __init__(self):
+#         print("Инициализатор Pos")
+#         # super().__init__()
+
+
+# class Line(Styles, Pos):
+#     def __init__(self, sp=Point, ep=Point, color="green", width=1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+
+#     def draw(self):
+#         print(f"Рисуем линию: {self._sp}, {self._ep}, {self._color}, {self._width}")
+
+
+# line1 = Line(Point(10,10), Point(12, 12), "green")
+# line1.draw()
+
+
+################################
+
+# Mixins
+
+# class Displayer:
+#     @staticmethod
+#     def display(message):
+#         print(message)
+
+    
+# class LoggerMixin:
+#     def log(self, message, filename="logfile.txt"):
+#         with open(filename, 'a') as fh:
+#             fh.write(message)
+
+#     def display(self, message):
+#         super().display(message)
+#         self.log(message)
+
+
+# class MySubClass(LoggerMixin, Displayer):
+#     def log(self, message):
+#         super().log(message, filename="subclasslog.txt")
+
+
+# subclass = MySubClass()
+# subclass.display("Эта строка будет отображаться и регистрироваться в файле subclasslog.txt")
+
+################################
+
+# Перегрузка операторов
+
+class Clock:
+    __DAY = 86400
+
+    def __init__(self, sec: int):
+        if not isinstance(sec, int):
+            raise ValueError("Секунды должны быть целым числом")
+        self.__sec = sec % self.__DAY
+
+    def get_format_time(self):
+        s = self.__sec % 60
+        m = (self.__sec // 60) % 60
+        h = (self.__sec // 3600) % 24
+        return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+
+    @staticmethod
+    def __get_form(x):
+        return str(x) if (x > 9) else "0" + str(x)
+
+    def get_second(self):
+        return self.__sec
+
+    def __add__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.__sec + other.get_second())
+
+    def __iadd__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        self.__sec += other.get_second()
+        return self
+
+
+c1 = Clock(100)
+c2 = Clock(260)
+c1 += c2
+print(c1.get_format_time())
+print(c2.get_format_time())
 
 
 
