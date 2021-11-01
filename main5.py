@@ -1598,23 +1598,44 @@ from abc import abstractmethod, ABC
 
 ################################
 
-class Person:
-    def __init__(self, name, surname, age):
-        self.name = name
-        self.surname = surname
-        self.age = age
+# class Person:
+#     def __init__(self, name, surname, age):
+#         self.name = name
+#         self.surname = surname
+#         self.age = age
 
-    def __str__(self):
-        return self.name, self.surname, self.age
+#     @property
+#     def data(self):
+#         return self.name, self.surname, self.age
 
-p = [
-    Person("Artur", "Avetisyan", 20),
-    Person("Elena", "Vasilieva", 40),
-    Person("Pavel", "Sentyakov", 23),
-    Person("Alexander", "Sannikov", 21)
-]
+#     def __str__(self):
+#         return f"{self.name}, {self.surname}, {self.age}"
 
-print(p)
+
+# class SortKey:
+#     def __init__(self, *args):
+#         self.__method = args
+    
+#     def __call__(self, lst):
+#         lst.sort(key= lambda i: [i.__dict__ for key in self.__method])
+
+
+
+
+
+# p = [
+#     Person("Artur", "Avetisyan", 20),
+#     Person("Elena", "Vasilieva", 40),
+#     Person("Pavel", "Sentyakov", 23),
+#     Person("Alexander", "Sannikov", 21)
+# ]
+
+# print(p)
+
+#######################################
+
+
+
 
 
 
