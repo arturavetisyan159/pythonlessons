@@ -1428,56 +1428,198 @@ from abc import abstractmethod, ABC
 
 ##################################
 
-class Human:
-    def __init__(self, name, lastname, age):
+# class Human:
+#     def __init__(self, name, lastname, age):
+#         self.name = name
+#         self.lastname = lastname
+#         self.age = age
+
+#     def info(self):
+#         return f"{self.lastname} {self.name} {self.age} лет."
+
+
+# class Student(Human):
+#     def __init__(self, name, lastname, age, spec, group, rate):
+#         super().__init__(name, lastname, age)
+#         self.spec = spec
+#         self.group = group
+#         self.rate = rate
+    
+#     def info(self):
+#         res = super().info()
+#         return res + f" Специализация-{self.spec}, группа {self.group}, рейтинг {self.rate}."
+
+# class Graduate(Student):
+#     def __init__(self, name, lastname, age, spec, group, rate, diploma_theme):
+#         super().__init__(name, lastname, age, spec, group, rate)
+#         self.diploma_theme = diploma_theme
+    
+#     def info(self):
+#         res = super.info()
+#         return res + f" Тема дипломной работы - {self.diploma_theme}"
+
+# class Teacher(Human):
+#     def __init__(self, name, lastname, age, exp, spec):
+#         super().__init__(name, lastname, age)
+#         self.exp = exp
+#         self.spec = spec
+
+#     def info(self):
+#         res = super().info()
+#         return res + f"Специализация - {self.spec}, опыт работы - {self.exp}"
+
+
+# group = [
+#     Student("Артур", "Аветисян", 21, "Программирование", 1904, 1),
+#     Graduate("Олег", "Тинькофф", 51, "Программирование", 1905, 2, "Внешшня безопасность"),
+#     Teacher("Олег", "Великий учитель", 51, "800 лет", "компьютерная безопасность")
+# ]
+
+# print(group[0].info())
+# # print(group[1].info())
+# print(group[2].info())
+
+##################################
+
+# class Cat:
+#     def __init__(self, name):
+#         self.name = name
+
+#     def __repr__(self):
+#         return f"{self.__class__} : {self.name}"
+
+#     def __str__(self):
+#         return f"{self.name}"
+
+# cat = Cat("Пушок")
+# print(cat)
+
+##################################
+
+# class Point:
+#     def __init__(self, *args):
+#         self.__cords = args
+    
+#     def __len__(self):
+#         return len(self.__cords)
+
+#     def __abs__(self):
+#         return list(map(abs, self.__cords))
+
+
+# p = Point(1, 2)
+# print(len(p))
+# print(abs(p))
+
+##################################
+# import math
+
+
+# class Point:
+#     __slots__ = ("x", "y", "__length")
+
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         self.length = round(math.sqrt(x*x + y*y), 1)
+
+#     @property
+#     def length(self):
+#         return self.__length
+
+#     @length.setter
+#     def length(self, value):
+#         self.__length = value
+
+# class Point3D(Point):
+#     __slots__ = ("z")
+
+#     def __init__(self, x, y, z):
+#         super().__init__(x, y)
+#         self.z = z
+
+
+
+
+# pt = Point(1, 2)
+# print(pt.length)
+# pt.length = 10
+# print(pt.length)
+# pt3 = Point3D(10, 20, 30)
+# print(pt3.x, pt3.y, pt3.z)
+
+##################################
+# Функторы
+
+# class Counter:
+#     def __init__(self):
+#         self.__counter = 0
+
+#     def __call__(self):
+#         self.__counter += 1
+#         print(f"counter = {self.__counter}")
+#         return self.__counter
+
+
+# c1 = Counter()
+# c1()
+# c1()
+
+# c2 = Counter()
+# c2()
+# c2()
+# c2()
+
+##################################
+
+# class StripChars:
+#     def __init__(self, chars):
+#         self.__chars = chars
+
+#     def __call__(self, *args, **kwargs):
+#         if not isinstance(args[0], str):
+#             raise ValueError("Аргумент должен быть строкой")
+        
+#         return args[0].strip(self.__chars)
+
+# s1 = StripChars("?:!., ")
+# print(s1(" Hello, World! "))
+
+# def strip_chars(chars):
+#     def wrap(string):
+#         if not isinstance(string[0], str):
+#             raise ValueError("Аргумент должен быть строкой")
+
+#         return string.strip(chars)
+#     return wrap
+
+# s1 = strip_chars("?:!., ")
+# print(s1(" Hello, World! "))
+
+################################
+
+class Person:
+    def __init__(self, name, surname, age):
         self.name = name
-        self.lastname = lastname
+        self.surname = surname
         self.age = age
 
-    def info(self):
-        return f"{self.lastname} {self.name} {self.age} лет."
+    def __str__(self):
+        return self.name, self.surname, self.age
 
-
-class Student(Human):
-    def __init__(self, name, lastname, age, spec, group, rate):
-        super().__init__(name, lastname, age)
-        self.spec = spec
-        self.group = group
-        self.rate = rate
-    
-    def info(self):
-        res = super().info()
-        return res + f" Специализация-{self.spec}, группа {self.group}, рейтинг {self.rate}."
-
-class Graduate(Student):
-    def __init__(self, name, lastname, age, spec, group, rate, diploma_theme):
-        super().__init__(name, lastname, age, spec, group, rate)
-        self.diploma_theme = diploma_theme
-    
-    def info(self):
-        res = super.info()
-        return res + f" Тема дипломной работы - {self.diploma_theme}"
-
-class Teacher(Human):
-    def __init__(self, name, lastname, age, exp, spec):
-        super().__init__(name, lastname, age)
-        self.exp = exp
-        self.spec = spec
-
-    def info(self):
-        res = super().info()
-        return res + f"Специализация - {self.spec}, опыт работы - {self.exp}"
-
-
-group = [
-    Student("Артур", "Аветисян", 21, "Программирование", 1904, 1),
-    Graduate("Олег", "Тинькофф", 51, "Программирование", 1905, 2, "Внешшня безопасность"),
-    Teacher("Олег", "Великий учитель", 51, "800 лет", "компьютерная безопасность")
+p = [
+    Person("Artur", "Avetisyan", 20),
+    Person("Elena", "Vasilieva", 40),
+    Person("Pavel", "Sentyakov", 23),
+    Person("Alexander", "Sannikov", 21)
 ]
 
-print(group[0].info())
-print(group[1].info())
-print(group[2].info())
+print(p)
+
+
+
+    
+
 
 
 
