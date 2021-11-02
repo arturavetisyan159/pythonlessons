@@ -1,5 +1,6 @@
 # Классы shape, triangle и тд
 from abc import ABC, abstractmethod
+import math
 
 class Shape:
     def __init__(self, color):
@@ -23,7 +24,7 @@ class Shape:
 
 
 class Square(Shape):
-    def __init__(self, a, color):
+    def __init__(self, a, color="black"):
         super().__init__(color)
         self.__a = a
 
@@ -50,7 +51,7 @@ class Square(Shape):
 
 
 class Rectangle(Shape):
-    def __init__(self, a, b, color):
+    def __init__(self, a, b, color="black"):
         super().__init__(color)
         self.__a = a
         self.__b = b
@@ -77,11 +78,45 @@ class Rectangle(Shape):
         print()
         self.draw()
 
+
+class Triangle(Shape):
+    def __init__(self, a, b, c, color="black"):
+        super().__init__(color)
+        self.__a = a
+        self.__b = b
+        self.__c = c
+
+    def perim(self):
+        return self.__a + self.__b + self.__c
+
+    def square(self):
+        if self.__a != self.__b:
+            raise ValueError("a должно быть равно b")
+        h = math.sqrt(self.__a**2 - (self.__c / 2)**2)
+        return (self.__b * h) / 2
+
+    def draw(self):
+        print("НЕ МОГУ НАРИСОВАТЬ ТРЕГУОЛЬНИК, СЛОМАЛ ГОЛОВУ")
+    
+    def info(self):
+        print(f"Сторона 1: {self.__a}")
+        print(f"Сторона 2: {self.__b}")
+        print(f"Сторона 3: {self.__c}")
+        print(f"Периметр равен: {self.perim()}")
+        print(f"Площадь равна: {self.square()}")
+        print(f"Цвет - {self.color}")
+        print()
+        self.draw()
+
 sq1 = Square(11, "green")
 rect1 = Rectangle(4, 5, "yellow")
+triang1 = Triangle(20, 20, 28, "green")
 
 sq1.info()
+print()
 rect1.info()
+print()
+triang1.info()
 
     
 
