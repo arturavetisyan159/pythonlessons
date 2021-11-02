@@ -1,7 +1,10 @@
-from rect import Triangle, Square, Rectangle
+from geometry import rect
+from geometry.sq import Square
+from geometry.trian import Triangle
 
-r1 = Rectangle(10, 20)
-r2 = Rectangle(30, 40)
+r1 = rect.Rectangle(10, 20)
+r2 = rect.Rectangle(30, 40)
+
 
 s1 = Square(10)
 s2 = Square(20)
