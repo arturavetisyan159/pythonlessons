@@ -1633,8 +1633,48 @@ from abc import abstractmethod, ABC
 # print(p)
 
 #######################################
+# Импортирование модулей и пакетов.
+#######################################
+
+class Rectangle:
+    def __init__(self, w, h):
+        self.w = w
+        self.h = h
+    
+    def get_perim(self):
+        return (self.w + self.h) * 2
+    
+
+class Square:
+    def __init__(self, a):
+        self.a = a
+    
+    def get_perim(self):
+        return self.a * 4
 
 
+class Triangle:
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    def get_perim(self):
+        return self.a + self.b + self.c
+
+r1 = Rectangle(10, 20)
+r2 = Rectangle(30, 40)
+
+s1 = Square(10)
+s2 = Square(20)
+
+t1 = Triangle(1, 2, 3)
+t2 = Triangle(4, 5, 6)
+
+shape = [r1, r2, s1, s2, t1, t2]
+
+for g in shape:
+    print(g.get_perim())
 
 
 
