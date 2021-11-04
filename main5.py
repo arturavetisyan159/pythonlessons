@@ -1636,45 +1636,93 @@ from abc import abstractmethod, ABC
 # Импортирование модулей и пакетов.
 #######################################
 
-class Rectangle:
-    def __init__(self, w, h):
-        self.w = w
-        self.h = h
+# class Rectangle:
+#     def __init__(self, w, h):
+#         self.w = w
+#         self.h = h
     
-    def get_perim(self):
-        return (self.w + self.h) * 2
+#     def get_perim(self):
+#         return (self.w + self.h) * 2
     
 
-class Square:
-    def __init__(self, a):
-        self.a = a
+# class Square:
+#     def __init__(self, a):
+#         self.a = a
     
-    def get_perim(self):
-        return self.a * 4
+#     def get_perim(self):
+#         return self.a * 4
 
 
-class Triangle:
-    def __init__(self, a, b, c):
-        self.a = a
-        self.b = b
-        self.c = c
+# class Triangle:
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
 
-    def get_perim(self):
-        return self.a + self.b + self.c
+#     def get_perim(self):
+#         return self.a + self.b + self.c
 
-r1 = Rectangle(10, 20)
-r2 = Rectangle(30, 40)
+# r1 = Rectangle(10, 20)
+# r2 = Rectangle(30, 40)
 
-s1 = Square(10)
-s2 = Square(20)
+# s1 = Square(10)
+# s2 = Square(20)
 
-t1 = Triangle(1, 2, 3)
-t2 = Triangle(4, 5, 6)
+# t1 = Triangle(1, 2, 3)
+# t2 = Triangle(4, 5, 6)
 
-shape = [r1, r2, s1, s2, t1, t2]
+# shape = [r1, r2, s1, s2, t1, t2]
 
-for g in shape:
-    print(g.get_perim())
+# for g in shape:
+#     print(g.get_perim())
+
+##################################
+
+# Класс как декоратор
+
+# class MyDecorator:
+#     def __init__(self, func1):
+#         self.func = func1
+
+#     def __call__(self, a, b):
+#         print("Перед вызовом функции")
+#         res = self.func(a, b)
+#         print("после вызова функции")
+#         return res
+
+
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+
+# print(func(2, 1))
+
+###################################
+
+class Power:
+    def __init__(self, arg):
+        self.name = arg
+
+    def __call__(self, func1):
+        def wrap(a, b):
+            print("Перед вызовом функции")
+            print(self.name)
+            func1(a, b)
+            print("После вызова функции")
+
+        return wrap
+
+
+@Power("test2")
+def func(a, b):
+    print(a, b)
+
+# @Power
+# def func2(a, b, c):
+#     return a * b * c
+
+func(2, 3)
+# print(func2(1, 2, 3))
 
 
 
