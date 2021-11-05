@@ -1701,21 +1701,18 @@ from abc import abstractmethod, ABC
 
 class Power:
     def __init__(self, arg):
-        self.name = arg
+        self.power = arg
 
     def __call__(self, func1):
         def wrap(a, b):
-            print("Перед вызовом функции")
-            print(self.name)
-            func1(a, b)
-            print("После вызова функции")
-
+            res = func1(a, b) ** self.power
+            print(res)
         return wrap
 
 
-@Power("test2")
+@Power(2)
 def func(a, b):
-    print(a, b)
+    return a * b
 
 # @Power
 # def func2(a, b, c):
