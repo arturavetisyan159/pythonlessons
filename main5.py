@@ -1699,27 +1699,157 @@ from abc import abstractmethod, ABC
 
 ###################################
 
-class Power:
-    def __init__(self, arg):
-        self.power = arg
+# class Power:
+#     def __init__(self, arg):
+#         self.power = arg
 
-    def __call__(self, func1):
-        def wrap(a, b):
-            res = func1(a, b) ** self.power
-            print(res)
-        return wrap
+#     def __call__(self, func1):
+#         def wrap(a, b):
+#             res = func1(a, b) ** self.power
+#             print(res)
+#         return wrap
 
 
-@Power(2)
-def func(a, b):
-    return a * b
+# @Power(2)
+# def func(a, b):
+#     return a * b
 
-# @Power
-# def func2(a, b, c):
-#     return a * b * c
+# # @Power
+# # def func2(a, b, c):
+# #     return a * b * c
 
-func(2, 3)
-# print(func2(1, 2, 3))
+# func(2, 3)
+# # print(func2(1, 2, 3))
+
+####################################
+# Декоратор методов
+
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print("*" * 20)
+#         fn(*args, **kwargs)
+#         print("*" * 20)
+#     return wrap
+
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+
+#     @dec
+#     def info(self):
+#         print (f"{self.name} {self.surname}")
+
+
+# p1 = Person("Виталий", "Бутерин")
+# p1.info()
+# p1.dec()
+
+####################################
+
+# def decorator(cls):
+#     class Wrapper(cls):
+#         def doubler(self, value):
+#             return value * 2
+#     return Wrapper
+
+# @decorator
+# class ActualClass:
+#     def __init__(self):
+#         print("Инициализатор класса ActualClass")
+
+#     def quad(self, value):
+#         return value * 4
+
+# obj = ActualClass()
+# print(obj.quad(4))
+# print(obj.doubler(5))
+
+
+####################################
+
+# class Message:
+#     _REGISTRY = {}
+    
+#     def __init__(self, text):
+#         self.__text = text
+
+#     def send(self):
+#         raise NotImplementedError()
+
+#     @classmethod
+#     def register(cls, name):
+#         def decorator(klass):
+#             cls._REGISTRY[name] = klass
+#             return klass
+#         return decorator
+
+#     @classmethod
+#     def create(cls, message_type, text):
+#         klass = cls._REGISTRY.get(message_type)
+#         if klass is None:
+#             raise ValueError("Такого мессенджера нет.")
+#         print(text, end=" ")
+
+#         return klass(text)
+
+
+# @Message.register("Telegram")
+# class TelegramMessanger(Message):
+#     def send(self):
+#         print("(Telegram)")
+
+# @Message.register("WhatsApp")
+# class WhatsAppMessanger(Message):
+#     def send(self):
+#         print("(WhatsApp)")
+
+# m1 = Message.create("Telegram", "text")
+# m1.send()
+
+# m2 = Message.create("WhatsApp", "new text")
+# m2.send()
+
+###########################
+
+# Дескрипторы
+# __get__, __set__, __delete__, __set_name__
+
+class StringD:
+    def __init__(self, value=None):
+        if value:
+            self.set(value)
+
+    def set(self, value):
+        self.__value = value
+
+    
+
+class Person:
+    def __init__(self, name, surname):
+        self.__name = name
+        self.__surname = surname
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
+
+    @property
+    def surname(self):
+        return self.__surname
+
+    @surname.setter
+    def surname(self, value):
+        self.__surname = value
+
+p = Person("Ivan", "Petrov")
+
+# DRY
+
 
 
 
