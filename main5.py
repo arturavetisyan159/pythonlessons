@@ -1815,41 +1815,103 @@ from abc import abstractmethod, ABC
 # Дескрипторы
 # __get__, __set__, __delete__, __set_name__
 
-class StringD:
-    def __init__(self, value=None):
-        if value:
-            self.set(value)
+# class StringD:
+#     def __init__(self, value=None):
+#         if value:
+#             self.set(value)
 
-    def set(self, value):
-        self.__value = value
+#     def set(self, value):
+#         self.__value = value
 
-    
+#     def get(self):
+#         return self.__value
 
-class Person:
-    def __init__(self, name, surname):
-        self.__name = name
-        self.__surname = surname
 
-    @property
-    def name(self):
-        return self.__name
 
-    @name.setter
-    def name(self, value):
-        self.__name = value
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = StringD(name)
+#         self.surname = StringD(surname)
 
-    @property
-    def surname(self):
-        return self.__surname
+#     # @property
+#     # def name(self):
+#     #     return self.__name
 
-    @surname.setter
-    def surname(self, value):
-        self.__surname = value
+#     # @name.setter
+#     # def name(self, value):
+#     #     self.__name = value
 
-p = Person("Ivan", "Petrov")
+#     # @property
+#     # def surname(self):
+#     #     return self.__surname
+
+#     # @surname.setter
+#     # def surname(self, value):
+#     #     self.__surname = value
+
+# p = Person("Ivan", "Petrov")
+# print(p.name.get())
+# print(p.surname.get())
 
 # DRY
 
+#############################
+# Непосредственно сами дескрипторы
+
+# class ValidString:
+    
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+
+#     def __set__(self, instance, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f"{self.__name} должно быть строкой только тип str")
+#         instance.__dict__[self.__name] = value
+
+
+# class Person:
+#     name = ValidString()
+#     surnmae = ValidString()
+
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+
+# p = Person("Ivan", "Petrov")
+# print(p.name)
+# p.name = 'Artur'
+# print(p.name)
+
+
+#############################
+
+class CoordValue:
+    def __set_name__(self, owner, name):
+        print(name)
+        self.__name = name
+
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.__name]
+
+    def __set__(self, instance, value):
+        instance.__dict__[self.__name] = value
+    
+
+
+class Point:
+    coordx = CoordValue()
+    coordy = CoordValue()
+
+    def __init__(self, x=0, y=0):
+        self.coordx = x
+        self.coordy = y
+
+
+pt = Point(1, 2)
+print(pt.coordx)
 
 
 
@@ -1861,8 +1923,6 @@ p = Person("Ivan", "Petrov")
 
 
     
-
-
 
 
 
