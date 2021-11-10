@@ -1888,30 +1888,129 @@ from abc import abstractmethod, ABC
 
 #############################
 
-class CoordValue:
-    def __set_name__(self, owner, name):
-        print(name)
-        self.__name = name
+# class CoordValue:
+#     def __set_name__(self, owner, name):
+#         print(name)
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         instance.__dict__[self.__name] = value
+#
+#
+#
+# class Point:
+#     coordx = CoordValue()
+#     coordy = CoordValue()
+#
+#     def __init__(self, x=0, y=0):
+#         self.coordx = x
+#         self.coordy = y
+#
+#
+# pt = Point(1, 2)
+# print(pt.coordx)
 
-    def __get__(self, instance, owner):
-        return instance.__dict__[self.__name]
+#############################
 
-    def __set__(self, instance, value):
-        instance.__dict__[self.__name] = value
-    
+# class NumCheck:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if isinstance(value, int) and value >= 0:
+#             instance.__dict__[self.__name] = value
+#             print(f"Значение {value} успешно присвоено")
+#         else:
+#             raise ValueError("Оба значения должны быть положительными числами!")
+#
+#
+# class Order:
+#     amount = NumCheck()
+#     price = NumCheck()
+#
+#     def __init__(self, name, a, p):
+#         self.amount = a
+#         self.price = p
+#         self.name = name
+#
+#     def printing(self):
+#         print(f"{self.amount * self.price}")
+#
+# order = Order("Apple", 5, 10)
+# order.printing()
 
+#################################
+# Метаклассы
 
-class Point:
-    coordx = CoordValue()
-    coordy = CoordValue()
+# MyList = type(
+#     "MyList",
+#     (list,),
+#     dict(get_length=lambda self: len(self))
+# )
+#
+# lst = MyList()
+# lst.append(1)
+# lst.append(3)
+# lst[0] = 3
+# print(lst, lst.get_length())
 
-    def __init__(self, x=0, y=0):
-        self.coordx = x
-        self.coordy = y
+###############################
 
+# class MyMetaClass(type):
+#     def __new__(cls, name, bases, dict):
+#         print("Создание нового объекта", name)
+#         return super(MyMetaClass, cls).__new__(cls, name, bases, dict)
+#
+#     def __init__(cls, name, bases, dict):
+#         print("Инициализация класса", name)
+#         super(MyMetaClass, cls).__init__(name, bases, dict)
+#
+#
+# class Student(metaclass=MyMetaClass):
+#     def __init__(self, name):
+#         self.__name = name
+#
+#     def get_name(self):
+#         return self.__name
+#
+#
+# stud = Student("Anna")
+# print(f"Имя студента {stud.get_name()}")
+# print("Тип объекта Student", type(stud))
+# print("Тип класса Student", type(Student))
 
-pt = Point(1, 2)
-print(pt.coordx)
+###################################
+
+# class Power:
+#     def __init__(self, power):
+#         self.power = power
+#
+#     def __call__(self, func):
+#         def wrapper(*args, **kwargs):
+#             res = func(*args, **kwargs) ** self.power
+#             return res
+#         return wrapper
+#
+#
+# @Power(3)
+# def multy(a=0, b=0):
+#     return a * b
+#
+# print("Результат работы функции с декоратором", multy(2, 2))
+
+################################
+
+# Связанный список.
+
+# есть односвязный список
+# есть двухсвязный список
+
 
 
 
