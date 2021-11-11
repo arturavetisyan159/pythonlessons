@@ -2005,34 +2005,6 @@ from abc import abstractmethod, ABC
 #
 # print("Результат работы функции с декоратором", multy(2, 2))
 
-################################
-# Связанный список.
-# есть односвязный список
-# есть двухсвязный список
-
-a = int(input("Введите пожалуйста ваше любимое число - "))
-
-print("Я сейчас попробую угадать ваше число")
-
-def guess():
-    return random.randint(1, 25)
-
-counter = 0
-guessed = False
-
-while guessed != True:
-     attempt = guess()
-     counter += 1
-     print(f"Моя попытка - {attempt}")
-     if attempt == a:
-         print(f"и она успешная. ваше число - {attempt}")
-         guessed = True
-     else:
-        print("неверная попытка. Еще раз")
-print()
-print(f"всего попытко : {counter}")
-
-
 
 
 
