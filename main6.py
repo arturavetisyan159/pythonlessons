@@ -172,8 +172,21 @@ links = [
 link = DoublyLinkedList()
 for name in links:
     link.add(name)
-link.print()
 
+while True:
+    link.print()
+    print("1 - добавить элемент в начало списка")
+    print("2 - добавить элемент в конец списка")
+    print("3 - удалить элемент из конца списка")
+    print("4 - удалить элемент из конца списка")
+    print("5 - выйти")
+    operation = input('=> ')
+    if operation == "1":
+        a = input("Новая ссылка: ")
+        link.add(a)
+    elif operation == "5":
+        print("Всего доброго!")
+        break
 
 
 
