@@ -130,63 +130,154 @@
 ################################
 # Двухсвязные списки
 
-class Node:
-    def __init__(self, elem, nxt=None, prev=None):
-        self.data = elem
-        self.prev = prev
-        self.next = nxt
+# class Node:
+#     def __init__(self, elem, nxt=None, prev=None):
+#         self.data = elem
+#         self.next = nxt
+#         self.prev = prev
+#
+#
+# class DoublyLinkedList:
+#     def __init__(self, head=None, tail=None):
+#         self.head = head
+#         self.tail = tail
+#
+#     def is_empty(self):
+#         return self.head is None and self.tail is None
+#
+#     def add(self, elem):
+#         '''Добавление элемента в начало списка'''
+#         if self.head is None:
+#             item = Node(elem)
+#             self.head = item
+#             self.tail = self.head
+#         else:
+#             item = Node(elem, self.head)
+#             self.head.prev = item
+#             self.head = self.head.prev
+#
+#     def append(self, elem):
+#         '''Добавление элемента в конец списка'''
+#         if self.tail is None:
+#             item = Node(elem)
+#             self.head = item
+#             self.tail = self.head
+#         else:
+#             self.tail.next = Node(elem, prev=self.tail)
+#             self.tail = self.tail.next
+#
+#     def pop(self):
+#         '''Удаление из конца списка'''
+#         if self.head == self.tail:
+#             self.head = self.tail = None
+#             return
+#         self.tail = self.tail.prev
+#         self.tail.next = None
+#
+#     def shift(self):
+#         if self.head == self.tail:
+#             self.head = self.tail = None
+#             return
+#         self.head = self.head.next
+#         self.head.prev = None
+#
+#     def print(self):
+#         val = self.head
+#         print("Список ссылок:")
+#         while val:
+#             print(val.data)
+#             val = val.next
+#         print()
+#
+#
+# links = [
+#     'http://site.ru',
+#     'http://site.ru/news',
+#     'http://site.ru/contacts',
+#     'http://site.ru/about'
+# ]
+#
+# link = DoublyLinkedList()
+# for name in links:
+#     link.add(name)
+#
+# while True:
+#     if not link.is_empty():
+#         link.print()
+#     else:
+#         print()
+#         print("Список ссылок пустой.")
+#     print("1 - добавить элемент в начало списка")
+#     print("2 - добавить элемент в конец списка")
+#     print("3 - удалить элемент из конца списка")
+#     print("4 - удалить элемент из начала списка")
+#     print("5 - выйти")
+#     operation = input('=> ')
+#     if operation == "1":
+#         a = input("Новая ссылка: ")
+#         link.add(a)
+#     elif operation == "2":
+#         a = input("Новая ссылка: ")
+#         link.append(a)
+#     elif operation == "3":
+#         link.pop()
+#     elif operation == "4":
+#         link.shift()
+#     elif operation == "5":
+#         print("Всего доброго!")
+#         break
+
+#################################
+
+# LIFO стек
+
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def __str__(self):
+        return f"{self.stack}"
+
+    def is_empty(self):
+        return self.stack == []
+
+    def push(self, item):
+        self.stack.append(item)
+
+    def pop(self):
+        if len(self.stack) == 0:
+            return None
+        return self.stack.pop()
+
+    def size(self):
+        return len(self.stack)
+
+    def show(self):
+        return self.stack
+
+brackets = {
+    ")": "(",
+    ">": "<"
+}
+
+def balanced_brackets(text):
+    s = Stack()
+    for c in text:
+        if c in brackets.values():
+            s.push(c)
+        elif c in brackets:
+            if s.is_empty():
+                return False
+            elif brackets[c] != s.pop():
+                return False
+    return s.is_empty()
+
+print(balanced_brackets('(<x)>(())()'))
+print(balanced_brackets('<((<<hello>>))>'))
 
 
-class DoublyLinkedList:
-    def __init__(self, head=None, tail=None):
-        self.head = head
-        self.tail = tail
-
-    def add(self, elem):
-        '''Добавление элемента в начало списка'''
-        if self.head is None:
-            item = Node(elem)
-            self.head = item
-            self.tail = self.head
-        else:
-            item = Node(elem, self.head)
-            self.head.prev = item
-            self.head = self.head.prev
-
-    def print(self):
-        val = self.head
-        print("Список ссылок:")
-        while val:
-            print(val.data)
-            val = val.next
-        print()
 
 
-links = [
-    'http://site.ru',
-    'http://site.ru/news',
-    'http://site.ru/contacts',
-    'http://site.ru/about'
-]
-
-link = DoublyLinkedList()
-for name in links:
-    link.add(name)
-
-while True:
-    link.print()
-    print("1 - добавить элемент в начало списка")
-    print("2 - добавить элемент в конец списка")
-    print("3 - удалить элемент из конца списка")
-    print("4 - удалить элемент из конца списка")
-    print("5 - выйти")
-    operation = input('=> ')
-    if operation == "1":
-        a = input("Новая ссылка: ")
-        link.add(a)
-    elif operation == "5":
-        print("Всего доброго!")
-        break
 
 
 
