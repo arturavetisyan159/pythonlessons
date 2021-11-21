@@ -231,49 +231,120 @@
 
 # LIFO стек
 
-class Stack:
-    def __init__(self):
-        self.stack = []
+# class Stack:
+#     def __init__(self):
+#         self.stack = []
+#
+#     def __str__(self):
+#         return f"{self.stack}"
+#
+#     def is_empty(self):
+#         return self.stack == []
+#
+#     def push(self, item):
+#         self.stack.append(item)
+#
+#     def pop(self):
+#         if len(self.stack) == 0:
+#             return None
+#         return self.stack.pop()
+#
+#     def size(self):
+#         return len(self.stack)
+#
+#     def show(self):
+#         return self.stack
+#
+# brackets = {
+#     ")": "(",
+#     ">": "<"
+# }
+#
+# def balanced_brackets(text):
+#     s = Stack()
+#     for c in text:
+#         if c in brackets.values():
+#             s.push(c)
+#         elif c in brackets:
+#             if s.is_empty():
+#                 return False
+#             elif brackets[c] != s.pop():
+#                 return False
+#     return s.is_empty()
+#
+# print(balanced_brackets('(<x)>(())()'))
+# print(balanced_brackets('<((<<hello>>))>'))
 
-    def __str__(self):
-        return f"{self.stack}"
+############################
 
-    def is_empty(self):
-        return self.stack == []
+# Очередь (FIFO - first in first out - первым пришел, первым ушел)
 
-    def push(self, item):
-        self.stack.append(item)
 
-    def pop(self):
-        if len(self.stack) == 0:
-            return None
-        return self.stack.pop()
+# class Queue:
+#     def __init__(self):
+#         self.queue = []
+#
+#     def push(self, item):
+#         self.queue.append(item)
+#
+#     def pop(self):
+#         if len(self.queue) == 0:
+#             return None
+#         return self.queue.pop()
+#
+#     def show(self):
+#         return self.queue
+#
+# s = Queue()
+# s.push(1)
+# s.push(2)
+# s.push(3)
+# print(s.show())
+# s.pop()
+# print(s.show())
 
-    def size(self):
-        return len(self.stack)
+############################
 
-    def show(self):
-        return self.stack
+# Бинарное дерево поиска (BST - binary search tree)
+# left < node < right
 
-brackets = {
-    ")": "(",
-    ">": "<"
-}
+class Node:
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
 
-def balanced_brackets(text):
-    s = Stack()
-    for c in text:
-        if c in brackets.values():
-            s.push(c)
-        elif c in brackets:
-            if s.is_empty():
-                return False
-            elif brackets[c] != s.pop():
-                return False
-    return s.is_empty()
+    def insert(self, data):
+        if self.data:
+            if data < self.data:
+                if self.left is None:
+                    self.left = Node(data)
+                else:
+                    self.left.insert(data)
+            elif data > self.data:
+                if self.right is None:
+                    self.right = Node(data)
+                else:
+                    self.right.insert(data)
+        else:
+            self.data = data
 
-print(balanced_brackets('(<x)>(())()'))
-print(balanced_brackets('<((<<hello>>))>'))
+    def print_tree(self):
+        if self.left:
+            self.left.print_tree()
+        print(self.data, end=" ")
+        if self.right:
+            self.right.print_tree()
+
+    # def findval(self, val):
+
+root = Node(10)
+root.insert(6)
+root.insert(14)
+root.insert(12)
+root.insert(3)
+root.print_tree()
+
 
 
 
