@@ -308,42 +308,158 @@
 # Бинарное дерево поиска (BST - binary search tree)
 # left < node < right
 
-class Node:
-    def __init__(self, data):
-        self.left = None
-        self.right = None
-        self.data = data
+# class Node:
+#     def __init__(self, data):
+#         self.left = None
+#         self.right = None
+#         self.data = data
+#
+#     def insert(self, data):
+#         if self.data:
+#             if data < self.data:
+#                 if self.left is None:
+#                     self.left = Node(data)
+#                 else:
+#                     self.left.insert(data)
+#             elif data > self.data:
+#                 if self.right is None:
+#                     self.right = Node(data)
+#                 else:
+#                     self.right.insert(data)
+#         else:
+#             self.data = data
+#
+#     def print_tree(self):
+#         if self.left:
+#             self.left.print_tree()
+#         print(self.data, end=" ")
+#         if self.right:
+#             self.right.print_tree()
+#
+#     def findval(self, val):
+#         if val < self.data:
+#             if self.left is None:
+#                 return str(val) + " - элемент не найден" \
+#             return self.left.findval(val)
+#
+# root = Node(10)
+# root.insert(6)
+# root.insert(14)
+# root.insert(12)
+# root.insert(3)
+# root.print_tree()
 
-    def insert(self, data):
-        if self.data:
-            if data < self.data:
-                if self.left is None:
-                    self.left = Node(data)
-                else:
-                    self.left.insert(data)
-            elif data > self.data:
-                if self.right is None:
-                    self.right = Node(data)
-                else:
-                    self.right.insert(data)
-        else:
-            self.data = data
+#############################
 
-    def print_tree(self):
-        if self.left:
-            self.left.print_tree()
-        print(self.data, end=" ")
-        if self.right:
-            self.right.print_tree()
+# Сериализация - процесс перевода какой либо структуры данных в последовательность битов
+# Десериализация - восстановление начального состояния структуры данных из битовой последовательности
+# marshal (.pyc)
+# pickle
+# json
 
-    # def findval(self, val):
+# Методы
+## dump() (сохранение в файл)
+## dumps() (сохранение в строку)
+## load()
+## loads()
 
-root = Node(10)
-root.insert(6)
-root.insert(14)
-root.insert(12)
-root.insert(3)
-root.print_tree()
+import pickle
+
+# filename = "hello.txt"
+# shoplist = {
+#     "фрукты": ["яблоки", "манго"],
+#     "овощи": ["морковь"],
+#     "бюджет": 1000
+# }
+#
+# # запись в файл
+# with open(filename, "wb") as fh:
+#     pickle.dump(shoplist, fh)
+#
+# # считывание из файла
+# with open(filename, "rb") as fh:
+#     a = pickle.load(fh)
+# print(a)
+
+######################
+# class Test:
+#     a_number = 35
+#     a_string = "привет"
+#     a_list = [1, 2, 3]
+#     a_dict = {"first": "a", "second": 2, "third": [1, 2, 3]}
+#     a_tuple = (22, 23)
+#
+#     def __str__(self):
+#         return f"Число: {Test.a_number} \nСтрока: {Test.a_string}\nСписок: {Test.a_list}\nСловарь: {Test.a_dict}\nКортеж: {Test.a_tuple}"
+#
+# obj = Test()
+# my_obj = pickle.dumps(obj)
+# print(my_obj)
+# res = pickle.loads(my_obj)
+# print(res)
+
+###########################
+
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         self.c = lambda x: x * 8
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr['c']
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(2)}"
+#
+# item1 = Test2()
+# item2 = pickle.dumps(item1)
+# item3 = pickle.loads(item2)
+#
+# print(item3.__dict__)
+# print(item3)
+
+###########################
+
+class TextReader:
+    def __init__(self, filename):
+        self.filename = filename
+        self.file = open(filename)
+        self.count = 0
+
+    def read_line(self):
+        self.count += 1
+        line = self.file.readline()
+        if not line:
+            return None
+        if line.endswith("\n"):
+            line = line[:-1]
+        return f"{self.count}: {line}"
+
+    def __getstate__(self):
+        state = self.__dict__.copy()
+        del state['file']
+        return state
+
+    def __setstate__(self, state):
+        self.__dict__.update(state)
+        file = open(self.filename)
+        for i in range(self.count):
+            file.readline()
+        self.file = file
+
+reader = TextReader("hello.txt")
+print(reader.read_line())
+print(reader.read_line())
+
+new_reader = pickle.loads(pickle.dumps(reader))
+print(new_reader.read_line())
 
 
 
