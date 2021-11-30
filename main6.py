@@ -427,39 +427,70 @@ import pickle
 
 ###########################
 
-class TextReader:
-    def __init__(self, filename):
-        self.filename = filename
-        self.file = open(filename)
-        self.count = 0
+# class TextReader:
+#     def __init__(self, filename):
+#         self.filename = filename
+#         self.file = open(filename)
+#         self.count = 0
+#
+#     def read_line(self):
+#         self.count += 1
+#         line = self.file.readline()
+#         if not line:
+#             return None
+#         if line.endswith("\n"):
+#             line = line[:-1]
+#         return f"{self.count}: {line}"
+#
+#     def __getstate__(self):
+#         state = self.__dict__.copy()
+#         del state['file']
+#         return state
+#
+#     def __setstate__(self, state):
+#         self.__dict__.update(state)
+#         file = open(self.filename)
+#         for i in range(self.count):
+#             file.readline()
+#         self.file = file
+#
+# reader = TextReader("hello.txt")
+# print(reader.read_line())
+# print(reader.read_line())
+#
+# new_reader = pickle.loads(pickle.dumps(reader))
+# print(new_reader.read_line())
 
-    def read_line(self):
-        self.count += 1
-        line = self.file.readline()
-        if not line:
-            return None
-        if line.endswith("\n"):
-            line = line[:-1]
-        return f"{self.count}: {line}"
+###############################
 
-    def __getstate__(self):
-        state = self.__dict__.copy()
-        del state['file']
-        return state
+# JSON
+import json
+data = {
+    "firstname": "Irina",
+    "lastname": "Dou",
+    "age": 35,
+    "children": [
+        {
+            "firstname": "Alice",
+            "age": 6
+        },
+        {
+            "firstname": "Bob",
+            "age": 8
+        }
+    ]
+}
+json_string = json.dumps(data)
+data = json.loads(json_string)
+print(data)
 
-    def __setstate__(self, state):
-        self.__dict__.update(state)
-        file = open(self.filename)
-        for i in range(self.count):
-            file.readline()
-        self.file = file
+# with open("data_file.json", "w") as fw:
+#     json.dump(data, fw, indent=2)
+#
+# with open("data_file.json", "r") as fw:
+#     data = json.load(fw)
+#     print(data)
 
-reader = TextReader("hello.txt")
-print(reader.read_line())
-print(reader.read_line())
-
-new_reader = pickle.loads(pickle.dumps(reader))
-print(new_reader.read_line())
 
 
 

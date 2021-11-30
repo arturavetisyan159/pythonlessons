@@ -1,0 +1,15 @@
+{
+  "firstname": "Irina",
+  "lastname": "Dou",
+  "age": 35,
+  "children": [
+    {
+      "firstname": "Alice",
+      "age": 6
+    },
+    {
+      "firstname": "Bob",
+      "age": 8
+    }
+  ]
+}
