@@ -464,25 +464,25 @@ import pickle
 ###############################
 
 # JSON
-import json
-data = {
-    "firstname": "Irina",
-    "lastname": "Dou",
-    "age": 35,
-    "children": [
-        {
-            "firstname": "Alice",
-            "age": 6
-        },
-        {
-            "firstname": "Bob",
-            "age": 8
-        }
-    ]
-}
-json_string = json.dumps(data)
-data = json.loads(json_string)
-print(data)
+# import json
+# data = {
+#     "firstname": "Ирина",
+#     "lastname": "Доу",
+#     "age": 35,
+#     "children": [
+#         {
+#             "firstname": "Алиса",
+#             "age": 6
+#         },
+#         {
+#             "firstname": "Боб",
+#             "age": 8
+#         }
+#     ]
+# }
+# json_string = json.dumps(data, sort_keys=True, ensure_ascii=False)
+# data = json.loads(json_string)
+# print(data)
 
 # with open("data_file.json", "w") as fw:
 #     json.dump(data, fw, indent=2)
@@ -491,7 +491,68 @@ print(data)
 #     data = json.load(fw)
 #     print(data)
 
+###############################
 
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def add_marks(self, mark):
+        self.marks.append(mark)
+
+    def delete_mark(self, index):
+        try:
+            self.marks.pop(index)
+        except:
+            print("Неправильный индекс")
+
+    def edit_marks(self, index, mark):
+        self.marks[index] = mark
+
+    def av_marks(self):
+        return round(sum(self.marks)/len(self.marks), 2)
+
+    def __str__(self):
+        res_marks = str()
+        for i in self.marks:
+            res_marks += " "
+            res_marks += str(i)
+
+        return (f"{self.name}, оценки: {res_marks}")
+
+
+class Group:
+    def __init__(self, group_name):
+        self.group = group_name
+        self.students = []
+
+    def __str__(self):
+        res_students = ''
+        for i in self.students:
+            res_students += str(i) + '\n'
+        return f"Группа: {self.group}\nСтуденты группы:\n{res_students}"
+
+    def add_student(self, student):
+        self.students.append(student)
+
+    def del_student(self, index):
+        self.students.pop(index)
+
+    @classmethod
+    def change_group(cls, group1, group2, index_student):
+        return group2.add_student(group1.del_student(index_student))
+
+
+student1 = Student("Andrey", [2, 3, 2, 5, 1, 3, 4])
+student2 = Student("Artur", [5, 5, 4, 4, 5, 4])
+student2 = Student("Petya", [1, 3, 2, 5, 5, 5, 5])
+
+group1 = Group("Python")
+group1.add_student(student1)
+group1.add_student(student2)
+
+print(group1)
 
 
 
